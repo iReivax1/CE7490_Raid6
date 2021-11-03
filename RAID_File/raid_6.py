@@ -1,12 +1,10 @@
-
-
-import galois
+from galois import GF2
 import numpy as np
 import concurrent.futures
 import math
 from copy import deepcopy
 
-GF256 = galois.GF(2**8)
+GF256 = GF2(2**8)
 
 class RAID(object):
 
@@ -15,7 +13,7 @@ class RAID(object):
         self.config = config
         assert self.raid_level == 6
         if not gf:
-            self.gf = GaloisField(num_data_disk=self.config.data_disk_count,
+            self.gf = GF2(num_data_disk=self.config.data_disk_count,
                                   num_checksum=self.config.parity_disk_count)
         else:
             self.gf = gf

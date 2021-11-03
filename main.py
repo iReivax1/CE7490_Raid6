@@ -19,28 +19,29 @@ RAID_settings = {
     'num_non_parity_disk' : 2,
     'num_parity_disk': 2,
     'size_of_disk': 16, #in bits
-    'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6',
+    'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
 }
 
 def main():
 
     logging.info("-----------------Set up the RAID 6 system-----------------")
-    list_of_disk = []
+    all_disk = []
     for idx in range(RAID_settings['num_disk']):
-        list_of_disk.append(DiskObject(disk_path=RAID_settings['root_dir'], id=idx, disk_size=RAID_settings['size_of_disk']))
+        all_disk.append(DiskObject(disk_path=RAID_settings['root_dir'], id=idx, disk_size=RAID_settings['size_of_disk']))
 
+    #store all the data as per normal, first 2 disk is normal
+    # normal_disk = DiskObject(disk_path=RAID_settings['root_dir'], id=-1, disk_size=RAID_settings['num_non_parity_disk'])
+    normal_disk = all_disk[:RAID_settings['num_non_parity_disk']]
 
-    raid_6 = RAID(disk_list=list_of_disk)
+    #init raid for the disks
+    raid_6 = RAID(disk_list=all_disk)
 
-    # Set up a logical disk to store the original data files
-
-    logical_disk = Disk(disk_path=conf.disk_dir, id=-1, disk_size=conf.logical_disk_size)
+    
 
     # Random Generate some files and store into logical disk
-
     file = File()
-    file.random_generate_string(data_size=conf.random_file_size)
-    logical_disk.write_to_disk(disk=logical_disk, data=file.file_content)
+    file.random_generate_string(data_size=RAID_settings['size_of_disk'])
+    normal_disk.write_to_disk(disk=logical_disk, data=file.file_content)
     data_block_list = logical_disk.set_up_data_block_list(block_size=conf.block_size)
 
     # Load the data block from logical disk into RAID 6
