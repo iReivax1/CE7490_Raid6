@@ -1,21 +1,15 @@
-# Date: 11/17/18
-# Author: Luke
-# Project: CE7490-RAID-6-Project
 
-from src.raid.raid_controller import RaidController
-from src.disk import Disk
-from src.galois_field import GaloisField
+
+import galois
 import numpy as np
 import concurrent.futures
-from src.util import Logger
 import math
 from copy import deepcopy
 
+GF256 = galois.GF(2**8)
 
-class rAID_6(object):
-    """
-    RADI 6 controller, inherited from Raid Controller
-    """
+class RAID(object):
+
     def __init__(self, disk_list, config, gf=None):
         super().__init__(6, disk_list)
         self.config = config

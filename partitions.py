@@ -1,12 +1,11 @@
 import os
 import sys
-from src.util import *
 import numpy as np
 import array
 import logging
 
-logging.basicConfig(filename='disk.log', level=logging.INFO)
-class Disk(object):
+
+class DiskObject(object):
     """
     Class to hold the entity of the disk, currently we use the naive way with a folder and a data file in the file
     system to represent the disk entity.

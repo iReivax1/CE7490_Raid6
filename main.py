@@ -2,30 +2,35 @@ import sys
 import os
 import sys
 
-CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(CURRENT_PATH)
-PAR_PATH = os.path.abspath(os.path.join(CURRENT_PATH, os.pardir))
+ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(ROOT_DIR)
+PAR_PATH = os.path.abspath(os.path.join(ROOT_DIR, os.pardir))
 sys.path.append(PAR_PATH)
 
-from src.raid.raid_6 import RAID_6
-from src.file import File
-from src.disk import Disk
-from src.util import Configuration, Logger
+from RAID_File.raid_6 import RAID
+from files import File
+from partitions import DiskObject
+import logging
 
+logging.basicConfig(filename='disk.log', level=logging.INFO)
+
+RAID_settings = {
+    'num_disk' : 4,
+    'num_non_parity_disk' : 2,
+    'num_parity_disk': 2,
+    'size_of_disk': 16, #in bits
+    'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6',
+}
 
 def main():
 
-    # Set up the configuration
+    logging.info("-----------------Set up the RAID 6 system-----------------")
+    list_of_disk = []
+    for idx in range(RAID_settings['num_disk']):
+        list_of_disk.append(DiskObject(disk_path=RAID_settings['root_dir'], id=idx, disk_size=RAID_settings['size_of_disk']))
 
-    conf = Configuration()
-    conf.log_out()
-    Logger.log_str("-----------------Set up the RAID 6 system-----------------")
 
-    # Set up the RAID 6 disks and RAID 6 disk controller
-
-    disk_list = [Disk(disk_path=conf.disk_dir, id=i, disk_size=conf.disk_size) for i in range(conf.disk_count)]
-    raid_6 = RAID_6(disk_list=disk_list,
-                    config=conf)
+    raid_6 = RAID(disk_list=list_of_disk)
 
     # Set up a logical disk to store the original data files
 
