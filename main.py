@@ -41,7 +41,7 @@ def main():
     # Random Generate some files and store into the data disks
     file = File()
     file.generate_random_data(data_size=RAID_settings['size_of_disk'])
-    data_disks.write_to_disk(disk=data_disks, data=file.file_content)
+    data_disks.write_to_disk(disk=data_disks, data=file.get_file_content)
     data_block_list = data_disks.set_up_data_block_list(block_size=RAID_settings['stripe_size'])
 
     # Load data from data disk into RAID 6
@@ -69,8 +69,8 @@ def main():
     # Update one char in file and re-generate
     logging.log_str("START : UPDATE")
 
-    file.update(index=0, new_char='t')
-    data_disks.write_to_disk(disk=data_disks, data=file.file_content)
+    file.update(idx=0, new_data='t')
+    data_disks.write_to_disk(disk=data_disks, data=file.get_file_content)
     data_block_list = data_disks.set_up_data_block_list(RAID_settings['stripe_size'])
     for i, new_data, old_data in zip(range(len(data_block_list)), data_block_list, raid_6.data_block_list):
         if new_data != old_data:
@@ -81,8 +81,8 @@ def main():
 
     # Update one char in file and re-generate
 
-    file.update(index=1, new_char='d')
-    data_disks.write_to_disk(disk=data_disks, data=file.file_content)
+    file.update(idx=1, new_data='d')
+    data_disks.write_to_disk(disk=data_disks, data=file.get_file_content)
     data_block_list = data_disks.set_up_data_block_list(block_size=RAID_settings['stripe_size'])
     for i, new_data, old_data in zip(range(len(data_block_list)), data_block_list, raid_6.data_block_list):
         if new_data != old_data:

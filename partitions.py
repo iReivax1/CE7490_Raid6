@@ -1,15 +1,9 @@
 import os
-import sys
 import numpy as np
-import array
 import logging
 
 
 class DiskObject(object):
-    """
-    Class to hold the entity of the disk, currently we use the naive way with a folder and a data file in the file
-    system to represent the disk entity.
-    """
     
     def __init__(self, disk_path, id, disk_size, disk_type='data', override_path=False):
         self.id = id
