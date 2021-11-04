@@ -2,13 +2,13 @@ import sys
 import os
 import sys
 
-ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(ROOT_DIR)
-PAR_PATH = os.path.abspath(os.path.join(ROOT_DIR, os.pardir))
-sys.path.append(PAR_PATH)
+# ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
+# sys.path.append(ROOT_DIR)
+# PAR_PATH = os.path.abspath(os.path.join(ROOT_DIR, os.pardir))
+# sys.path.append(PAR_PATH)
 
 from RAID_File.raid_6 import RAID
-from files import File
+from file import File
 from partitions import DiskObject
 import logging
 
@@ -33,16 +33,14 @@ def main():
 
     #store all the data as per normal, first 2 disk is normal
     data_disks = DiskObject(disk_path=RAID_settings['root_dir'], id=-1, disk_size=RAID_settings['data_disks'])
-    # normal_disk = all_disk[:RAID_settings['num_non_parity_disk']]
+    
 
     #init raid for the disks
     raid_6 = RAID(disk_list=all_disk)
 
-    
-
     # Random Generate some files and store into the data disks
     file = File()
-    file.random_generate_string(data_size=RAID_settings['size_of_disk'])
+    file.generate_random_data(data_size=RAID_settings['size_of_disk'])
     data_disks.write_to_disk(disk=data_disks, data=file.file_content)
     data_block_list = data_disks.set_up_data_block_list(block_size=RAID_settings['stripe_size'])
 
@@ -59,21 +57,21 @@ def main():
 
     logging.log_str("START : Recovery of data")
     # Start to do the recover test
-    corrupted_disk_list = (6, 7)
+    corrupted_disk_list = (3, 4)
     for disk_id in corrupted_disk_list:
         with open(file=os.path.join(raid_6.disk_list[disk_id].disk_path, 'data'), mode='w') as f:
             f.write("")
             logging.log_str('Disk {}\'s data is erased'.format(disk_id))
 
-    raid_6.recover_disk(corrupted_disk_index=(6, 7))
+    raid_6.recover_disk(corrupted_disk_index=(3, 4))
     raid_6.read_from_disk_and_generate_data()
 
     # Update one char in file and re-generate
-    logging.log_str("-----------------Test data update-----------------")
+    logging.log_str("START : UPDATE")
 
     file.update(index=0, new_char='t')
     data_disks.write_to_disk(disk=data_disks, data=file.file_content)
-    data_block_list = data_disks.set_up_data_block_list(block_size=conf.block_size)
+    data_block_list = data_disks.set_up_data_block_list(RAID_settings['stripe_size'])
     for i, new_data, old_data in zip(range(len(data_block_list)), data_block_list, raid_6.data_block_list):
         if new_data != old_data:
             raid_6.update_data(block_global_index=i, new_data_block=new_data)
