@@ -56,7 +56,7 @@ class RAID(object):
         :return: Data from all the disks
         """
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.config.disk_count) as executor:
-            res = list(executor.map(Disk.read_from_disk, self.disk_list))
+            res = list(executor.map(Disk.read(), self.disk_list))
 
         removed_res = []
         for i, re in enumerate(res):
@@ -156,7 +156,7 @@ class RAID(object):
                 self.no_empty_chr(val) for val in self.parity_char[i - self.config.data_disk_count]), mode='w')
         disk = self.disk_list[disk_id]
 
-        old_data_block = disk.read_from_disk(disk=disk)
+        old_data_block = disk.read(disk=disk)
         res = self._byte_to_str(old_data_block)
         new_res = list(deepcopy(res))
         new_res[chuck_id] = self._byte_to_str(new_data_block)[0]

@@ -14,8 +14,7 @@ class File(object):
     
     def get_file_content(self):
         return np.array(self.data).tostring()
-    
-    @staticmethod
+
     def byte_to_string(bytes):
         try:
             string_data = str(bytes.decode('utf-8'))

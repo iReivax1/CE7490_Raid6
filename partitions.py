@@ -2,44 +2,56 @@ import os
 import numpy as np
 import logging
 
+from numpy.core.shape_base import block
+
 
 class DiskObject(object):
     
-    def __init__(self, disk_path, id, disk_size, disk_type='data', override_path=False):
+    def __init__(self, dir, id, size, type='data', override=False):
         self.id = id
-        self.disk_size = disk_size
-        self.disk_type = disk_type
-        self.disk_path = self.create_disk_folder(disk_path=os.path.join(disk_path, 'disk_%d' % id),
-                                                 override_path=override_path)
+        self.size = size
+        self.type = type
+        self.dir = self.create_folders(disk_dir=os.path.join(dir, '_disk_%d' % id))
         self.data_file_path = None
-        self.block_list = None
+        self.block_arr = None
+        self.override_enabled = override
+    
+    def get_id(self):
+        return self.id
 
-    def create_disk_folder(self, disk_path, override_path=False):
-        if os.path.isdir(disk_path) and override_path is False:
-            raise ValueError('Disk %s already existed' % disk_path)
-        os.mkdir(disk_path)
-        logging.info(log_str=str('Disk %d is created at %s' % (self.id, disk_path)))
-        return disk_path
-
-    @staticmethod
-    def write_to_disk(disk, data, mode='wb'):
-        with open(os.path.join(disk.disk_path, 'data'), mode) as f:
-            f.write(data)
-            disk.data_file_path = os.path.join(disk.disk_path, 'data')
-            logging.info(log_str='Data is written into %s' % disk.data_file_path)
-
-    @staticmethod
-    def read_from_disk(disk, mode='rb'):
-        with open(disk.data_file_path, mode) as f:
+    def read(self, id):
+        with open(os.path.join(self.dir, '_disk_%d' % id), 'rb') as f:
             return f.read()
 
-    def set_up_data_block_list(self, block_size):
-        assert self.data_file_path is not None
-        content = self.read_from_disk(disk=self)
-        if len(content) % block_size != 0:
-            content += [0 for _ in range(block_size - len(content) % block_size)]
-        assert len(content) % block_size == 0
+    def write(self, id, data):
+        with open(os.path.join(self.dir, '_disk_%d' % id), 'wb') as f:
+            f.write(data)
+            logging.info('Write done at{0}'.format(self.id))
 
-        block_list = [content[i: min(len(content), i + block_size)] for i in range(0, len(content), block_size)]
-        self.block_list = block_list
-        return block_list
+
+    def get_data_block(self, stripe_size):
+        data_content = self.read(id=self.id)
+        size_content = len(data_content)
+        block_arr = []
+        #if size of content is not multiple of stripe size
+        # Padding remainder data with 0
+        if size_content % stripe_size != 0:
+            data_content += [0 for _ in range(stripe_size - (size_content % stripe_size))]
+        
+        assert size_content % stripe_size == 0
+        
+        for i in range(0, size_content , stripe_size):
+            end_of_block_idx = min(size_content, i+stripe_size)
+            block_arr.append(data_content[i:end_of_block_idx])
+        self.block_arr = block_arr
+        return block_arr
+    
+
+    def create_folders(self, disk_dir):
+        if os.path.isdir(disk_dir) and self.override_enabled is False:
+            raise ValueError('Disk {} already existed'.format(disk_dir))
+        else:
+            os.mkdir(disk_dir)
+            logging.info('Disk {0} is created at {1}'.format(self.id, str(disk_dir)))
+        
+        return disk_dir
