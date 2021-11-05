@@ -15,29 +15,29 @@ import logging
 logging.basicConfig(filename='disk.log', level=logging.INFO)
 
 RAID_settings = {
-    'total_num_disk' : (2+2),
-    'num_normal_disk' : 2,
-    'num_parity_disk': 2,
-    'size_of_disk': 16, 
-    'size_of_file': 8,#in bits
-    'stripe_size' : 4,
-    'data_disks' : (16 * 2),  #num_normal_disk * size_of_disk
+    'total_num_disk' : (2+3), #normal + parity disks
+    'num_normal_disk' : 3, # 3 data disks
+    'num_parity_disk': 2, #1 parity # 1 RS
+    'size_of_disk': 64, 
+    'size_of_file': 32, #in bits , int 8 is 8 bit.
+    'stripe_size' : 8,
+    'data_disks' : (64 * 6),  #num_normal_disk * size_of_disk
     'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
 }
 
 def main():
 
     logging.info("Start")
-    all_disk = []
+    all_disk_arr = []
     for idx in range(RAID_settings['total_num_disk']):
-        all_disk.append(DiskObject(dir=RAID_settings['root_dir'], id=idx, size=RAID_settings['size_of_disk'], type='data'))
+        all_disk_arr.append(DiskObject(dir=RAID_settings['root_dir'], id=idx, size=RAID_settings['size_of_disk'], type='data'))
 
     #store all the data as per normal, first 2 disk is normal
     data_disk = DiskObject(dir=RAID_settings['root_dir'], id=-1, size=RAID_settings['data_disks'], type='data')
     
 
     #init raid for the disks
-    raid_6 = RAID(disk_list=all_disk)
+    raid_6 = RAID(disk_list=all_disk_arr, num_normal_disk=RAID_settings['num_normal_disk'], num_parity_disk=RAID_settings['num_parity_disk'])
 
     # Random Generate some files and store into the data disks
     file = File()

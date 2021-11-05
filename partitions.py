@@ -13,7 +13,7 @@ class DiskObject(object):
         self.type = type
         self.dir = self.create_folders(disk_dir=os.path.join(dir, '_disk_%d' % id))
         self.data_file_path = None
-        self.block_arr = None
+        self.data_blocks = None
         self.override_enabled = override
     
     def get_id(self):
@@ -32,7 +32,7 @@ class DiskObject(object):
     def get_data_block(self, stripe_size):
         data_content = self.read(id=self.id)
         size_content = len(data_content)
-        block_arr = []
+        data_blocks = []
         #if size of content is not multiple of stripe size
         # Padding remainder data with 0
         if size_content % stripe_size != 0:
@@ -42,9 +42,9 @@ class DiskObject(object):
         
         for i in range(0, size_content , stripe_size):
             end_of_block_idx = min(size_content, i+stripe_size)
-            block_arr.append(data_content[i:end_of_block_idx])
-        self.block_arr = block_arr
-        return block_arr
+            data_blocks.append(data_content[i:end_of_block_idx])
+        self.data_blocks = data_blocks
+        return data_blocks
     
 
     def create_folders(self, disk_dir):

@@ -1,42 +1,50 @@
 from galois import GF2
 import numpy as np
 import concurrent.futures
+from file import File
 import math
+import logging
 from copy import deepcopy
 
 GF256 = GF2(2**8)
 
 class RAID(object):
 
-    def __init__(self, disk_list, config, gf=None):
-        super().__init__(6, disk_list)
-        self.config = config
-        assert self.raid_level == 6
-        if not gf:
-            self.gf = GF2(num_data_disk=self.config.data_disk_count,
-                                  num_checksum=self.config.parity_disk_count)
+    def __init__(self, disk_list,num_normal_disk,num_parity_disk, gf=None):
+        super().__init__()
+        self.disk_list = disk_list
+        self.num_normal_disk = num_normal_disk
+        self.num_parity_disk = num_parity_disk 
+        if gf is None:
+            self.gf = GF2(num_data_disk=self.num_normal_disk,
+                                  num_checksum=self.num_parity_disk)
         else:
             self.gf = gf
+        
+        self.data_blocks = None
+        #gf stuff    
         self.encode_matrix = self._generate_encode_matrix()
         self.parity_int = None
         self.parity_char = None
         self.block_to_disk_map = None
-        self.data_block_list = None
 
-    def write_file(self, data_block_list):
-        """
-        Write the file to the disks concurrently, firstly computing the parity then concurrently write to all the disks
-        :param data_block_list: a list contains the stripped data blocks
-        :return: None
-        """
-        self.data_block_list = data_block_list
-        data = self._split_block_into_data_disks(data_disks_n=self.config.data_disk_count,
-                                                 data_block=data_block_list,
-                                                 block_count_per_chunk=self.config.block_num_per_chunk)
+
+
+    #striping technique when writing file
+    def write_file(self, data_blocks):
+        self.data_blocks = data_blocks
+        data = self._split_block_into_data_disks(data_disks= self.num_normal_disk ,
+                                                 data_block=data_blocks,
+                                                 block_count_per_chunk=2)
+        #add parity bits to column                                                 
         data_with_parity = np.concatenate([data, self.compute_parity(data=data)], axis=0)
 
         for disk, data in zip(self.disk_list, data_with_parity.tolist()):
             disk.write_to_disk(disk=disk, data="".join(self.no_empty_chr(val) for val in data), mode='w')
+
+
+    def check_empty_int(self, content):
+        return
 
     def no_empty_chr(self, val):
         """
@@ -56,7 +64,7 @@ class RAID(object):
         :return: Data from all the disks
         """
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.config.disk_count) as executor:
-            res = list(executor.map(Disk.read(), self.disk_list))
+            res = list(executor.map(File.get_file_content(), self.disk_list))
 
         removed_res = []
         for i, re in enumerate(res):
@@ -74,8 +82,8 @@ class RAID(object):
         """
         str_data = [list(map(self._byte_to_str, data_i.tolist())) for data_i in data]
         int_data = list(map(self._str_to_order, str_data))
-        self.parity_int, self.parity_char = self.gf.gen_parity(data=np.array(int_data))
-        Logger.log_str(log_str='Get the parity:\n{}'.format(self.parity_int))
+        self.parity_int, self.parity_char = self.gf.(data=np.array(int_data))
+        logging.info('result of compute parity:\n{0}'.format(self.parity_int))
         return self.parity_char
 
     def check_corruption(self, disk_data_in_int):
@@ -84,13 +92,13 @@ class RAID(object):
         :return: A boolean, True for failed, False for not.
         """
         new_parity, _ = self.gf.gen_parity(disk_data_in_int[0:self.config.data_disk_count])
-        Logger.log_str('Check silent corruption\nNew parity is {}'.format(new_parity))
-        Logger.log_str('Old parity is {}'.format(self.parity_int))
+        logging.info('Check silent corruption\nNew parity is {0}'.format(new_parity))
+        logging.info('Old parity is {0}'.format(self.parity_int))
         res = np.bitwise_xor(np.array(self.parity_int), np.array(new_parity))
         if np.count_nonzero(res) == 0:
-            Logger.log_str('No corruption')
+            logging.log_str('No corruption')
         else:
-            Logger.log_str('Exist corruption!!!', mode='error')
+            logging.log_str('Exist corruption!!!', mode='error')
         pass
 
     def recover_disk(self, corrupted_disk_index=()):
@@ -99,7 +107,7 @@ class RAID(object):
         :param corrupted_disk_index: a list contain the corrupted disk indexes
         :return: None
         """
-        Logger.log_str(log_str='Corrupted disks detected: {}'.format(corrupted_disk_index))
+        logging.log_str('Corrupted disks detected: {0}, preparing to disk recovery'.format(corrupted_disk_index))
 
         # Retrieve the good disks data: vector_e_new and corresponding encode matrix rows: matrix_a_new
         matrix_a_new, vector_e_new = self.gf.recover_matrix(mat_a=self.encode_matrix,
@@ -113,14 +121,14 @@ class RAID(object):
             new_data.append(self._gaussian_elimination(augmented_matrix))
         new_data = np.transpose(new_data)
         self.parity_int, self.parity_char = self.gf.gen_parity(new_data)
-        Logger.log_str(log_str='Recovered disks: {}'.format(corrupted_disk_index))
+        logging.info(log_str='Recovered disks: {}'.format(corrupted_disk_index))
         new_data = self._int_data_to_chr(data=new_data)
         data_with_parity = np.concatenate([new_data, self.parity_char], axis=0)
         # Write the recovered data to disks
         for i, disk, data in zip(range(self.config.disk_count), self.disk_list, data_with_parity.tolist()):
             if i in corrupted_disk_index:
                 disk.write_to_disk(disk=disk, data="".join(self.no_empty_chr(val) for val in data), mode='w')
-        Logger.log_str('Recovered data is written to disk')
+        logging.log_str('Recovered data is written to disk')
 
     def update_data(self, block_global_index, new_data_block):
         """
@@ -139,7 +147,7 @@ class RAID(object):
         # Generate the new parity, by only computing the block that is changed.
 
         parity_int, parity_char = self.gf.gen_parity(data=np.array(int_data).reshape([1, -1]))
-        Logger.log_str(log_str='Get the parity:\n{}'.format(self.parity_int))
+        logging.info(log_str='Get the parity:\n{}'.format(self.parity_int))
         parity_char = parity_char.reshape([-1])
         parity_int = parity_int.reshape([-1])
 
@@ -147,7 +155,7 @@ class RAID(object):
         for i in range(self.config.parity_disk_count):
             self.parity_int[i][chuck_id] = parity_int[i]
             self.parity_char[i][chuck_id] = parity_char[i]
-        Logger.log_str(log_str='Get the updated parity:\n{}'.format(self.parity_int))
+        logging.info(log_str='Get the updated parity:\n{}'.format(self.parity_int))
 
         # Write the updated data and parity to disks
         for i in range(self.config.data_disk_count, self.config.disk_count):
@@ -204,7 +212,7 @@ class RAID(object):
         """
         return self.gf.gen_matrix_A()
 
-    def _split_block_into_data_disks(self, data_disks_n, data_block, block_count_per_chunk):
+    def _split_block_into_data_disks(self, data_disks, data_block, block_count_per_chunk):
         """
         Split the data block from logical disk into raid data disks
         :param data_disks_n: total number of data disks in raid 6
@@ -247,7 +255,7 @@ class RAID(object):
         new_res = []
         for i, j in self.block_to_disk_map:
             new_res.append(res[i][j])
-        Logger.log_str(
+        logging.info(
             'Data is {}'.format(self._int_data_to_string(new_res, non_zero_flag=False)))
 
     # Below are some conversion for different data formats: bytes, string, char, int
@@ -284,8 +292,8 @@ class RAID(object):
 
     @staticmethod
     def _byte_to_int_all_disk(data, conf):
-        res = list(map(RAID_6._byte_to_str, data))
-        res = list(map(RAID_6._str_to_order_for_parity, res, [conf.char_order_for_zero for _ in range(len(res))]))
+        res = list(map(RAID._byte_to_str, data))
+        res = list(map(RAID._str_to_order_for_parity, res, [conf.char_order_for_zero for _ in range(len(res))]))
         return res
 
     def _int_data_to_string(self, data, non_zero_flag):
