@@ -1,0 +1,204 @@
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_-1
+INFO:root:Generating string ['k' 'z' 'z' 'l']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_-1
+INFO:root:Generating string ['k' 'i' 's' 's']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_-1
+INFO:root:Generating string ['n' 'u' 'g' 'a']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_-1
+INFO:root:Generating string ['i' 'd' 'y' 'c']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_-1
+INFO:root:Generating string ['z' 'f' 'c' 'h']
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/_disk_-1
+INFO:root:Generating string ['d' 'y' 'r' 'x']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1
+INFO:root:Generating string ['c' 'b' 'c' 'p']
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1
+INFO:root:Generating string ['n' 'z' 'j' 'u']
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1
+INFO:root:Generating string ['z' 'z' 'b' 'm']
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1
+INFO:root:Generating string ['k' 'z' 'j' 'e']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1
+INFO:root:Generating string ['x' 'q' 'k' 'k']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1
+INFO:root:Generating string ['m' 't' 'u' 't']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1
+INFO:root:Generating string ['m' 'v' 'j' 'd']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1
+INFO:root:Generating string ['y' 'w' 'j' 'h' 'g' 'u' 'j' 'u' 'c' 'v' 'n' 'p' 'x' 'u' 'w' 'p' 'f' 'o'
+ 's' 'j' 'l' 'r' 'e' 'g' 'x' 'l' 'd' 'i']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1
+INFO:root:Generating string ['d' 'v' 'w' 'm' 'g' 'y' 'm' 'j' 'h' 'v' 'b' 'r' 'n' 'e' 'l' 'j' 'l' 'u'
+ 'v' 'p' 'd' 'a' 'g' 'd' 'v' 'c' 'p' 'f']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Start
+INFO:root:Start
+INFO:root:Start
+INFO:root:Start
+INFO:root:Start
+INFO:root:Start
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_3
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_1
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_0
+INFO:root:Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_2
+INFO:root:Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_4
+INFO:root:Generating string ['b' 'j' 'p' 'd' 'u' 'k' 'o' 'b' 's' 'd' 'j' 'e' 'k' 'e' 'd' 'c' 'q' 'g'
+ 'z' 'y' 'g' 'b' 'e' 'q' 'r' 'y' 'h' 'l']
+INFO:root:Write done at-1
+INFO:root:START : Write to RAID 6

@@ -13,7 +13,7 @@ class FileObject(object):
         self.data = data
     
     def get_file_content(self):
-        return np.array(self.data).tostring()
+        return np.array(self.data)
     
     def byte_to_string(self, bytes):
         try:
@@ -30,8 +30,8 @@ class FileObject(object):
         #randomly selects # of characters from above
         self.data = np.random.choice(ascii_list, size=data_size)
         
-        
-        logging.info('Generating string {0}'.format(str(self.data.decode('utf-8'))))
+
+        logging.info('Generating string {0}'.format(str(self.data)))
   
 
     def update(self, idx, new_data):

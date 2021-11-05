@@ -45,9 +45,7 @@ class RAID(object):
             disk.write(id = disk.get_id() , data=''.join(self.check_empty_char(datum) for datum in data), mode='w')
 
     def read(self, fname, size):
-        """
-        read size chunk from fname(RAID6 system)
-        """
+  
         byte_ndarray = self._read_n(fname, self.N)
         self.check(byte_ndarray)
         data_ndarray = byte_ndarray[:-2]
@@ -57,7 +55,7 @@ class RAID(object):
 
     def read_from_disk_and_generate_data(self):
         
-        res = self.read_all_data_disks()
+        res = self.read_all_non_parity_disk()
         res = [re.tolist() for re in res][0:self.num_normal_disk ]
         new_res = []
         for i, j in self.block_to_disk_map:
@@ -66,13 +64,13 @@ class RAID(object):
             'Data is {}'.format(self._int_data_to_string(new_res, non_zero_flag=False)))
 
 
-    def read_all_data_disks(self, corrupted_disk_index=()):
+    def read_all_non_parity_disk(self, corrupted_disk_index=()):
         """
         Read the disks concurrently to a numpy array.
         :return: Data from all the disks
         """
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.num_normal_disk) as executor:
-            res = list(executor.map(File.get_file_content(), self.disk_list))
+            res = list(executor.map(FileObject.get_file_content(), self.disk_list))
 
         removed_res = []
         for i, re in enumerate(res):
@@ -92,7 +90,7 @@ class RAID(object):
         """
         str_data = [list(map(self._byte_to_str, data_i.tolist())) for data_i in data]
         int_data = list(map(self._str_to_order, str_data))
-        self.parity_int, self.parity_char = self.gf.(data=np.array(int_data))
+        self.parity_int, self.parity_char = self.gf(data=np.array(int_data))
         logging.info('result of compute parity:\n{0}'.format(self.parity_int))
         return self.parity_char
 
@@ -121,7 +119,7 @@ class RAID(object):
 
         # Retrieve the good disks data: vector_e_new and corresponding encode matrix rows: matrix_a_new
         matrix_a_new, vector_e_new = self.gf.recover_matrix(mat_a=self.gf_matrix,
-                                                            vec_e=self.read_all_data_disks(corrupted_disk_index),
+                                                            vec_e=self.read_all_non_parity_disk(corrupted_disk_index),
                                                             corrupt_index=corrupted_disk_index)
         data_strip_count = vector_e_new.shape[1]
         new_data = []

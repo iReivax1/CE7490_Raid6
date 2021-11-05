@@ -1,5 +1,5 @@
 # rs_functions.py
-from gftable import *
+from gf.gftable import *
 
 # Addition
 def gf_add(*args):
