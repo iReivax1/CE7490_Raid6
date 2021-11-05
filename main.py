@@ -7,7 +7,7 @@ import sys
 # PAR_PATH = os.path.abspath(os.path.join(ROOT_DIR, os.pardir))
 # sys.path.append(PAR_PATH)
 
-# from RAID_File.raid_6 import RAID
+from RAID_File.raid_6 import RAID
 from fileObject import FileObject
 from diskObject import DiskObject
 import logging
@@ -35,7 +35,7 @@ def main():
     temp_data_disk = DiskObject(dir=RAID_settings['root_dir'], id=-1, size=RAID_settings['data_disks'], type='data')
     
     #init raid for the disks
-    # raid_6 = RAID(disk_list=all_disk_arr, num_normal_disk=RAID_settings['num_normal_disk'], num_parity_disk=RAID_settings['num_parity_disk'])
+    raid_6 = RAID(disk_list=all_disk_arr, num_normal_disk=RAID_settings['num_normal_disk'], num_parity_disk=RAID_settings['num_parity_disk'])
 
     # Random Generate some files and store into the data disks
     file = FileObject()
@@ -46,8 +46,8 @@ def main():
     # Load data from data disk into RAID 6
     logging.info("START : Write to RAID 6")
     data_block_list = temp_data_disk.get_data_block(stripe_size=RAID_settings['stripe_size'])
-    # raid_6.write_file(data_block_list=data_block_list)
-    # raid_6.read_from_disk_and_generate_data()
+    raid_6.write_file(data_block_list=data_block_list)
+    raid_6.read_from_disk_and_generate_data()
 
     # logging.log_str("START : Read corrupted data")
 

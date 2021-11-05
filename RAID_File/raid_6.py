@@ -1,4 +1,4 @@
-from galois import GF2
+import galois 
 import numpy as np
 import concurrent.futures
 from fileObject import FileObject
@@ -6,9 +6,8 @@ import math
 import logging
 from copy import deepcopy
 
-from gf.gfutils import *
 
-GF256 = GF2(2**8)
+GF256 = galois.GF(2**8)
 
 class RAID(object):
 
@@ -17,25 +16,26 @@ class RAID(object):
         self.disk_list = disk_list
         self.num_normal_disk = num_normal_disk
         self.num_parity_disk = num_parity_disk 
-        if gf is None:
-            self.gf = GF2(num_data_disk=self.num_normal_disk,
-                                  num_checksum=self.num_parity_disk)
-        else:
-            self.gf = gf
+        # if gf is None:
+        #     self.gf = GF256(num_data_disk=self.num_normal_disk,
+        #                           num_checksum=self.num_parity_disk)
+        # else:
+        #     self.gf = GF256
+        self.gf = GF256
         
         self.data_blocks = None
         #gf stuff    
         self.gf_matrix = self.gf.gen_matrix_A()
         self.parity_int = None
         self.parity_char = None
-        self.block_to_disk_map = None
+        self.block_to_disk_mapping = None
 
     #striping technique when writing file
     def write_file(self, data_block_list):
         self.data_blocks = data_block_list
-        data = self._split_block_into_data_disks(num_data_disks= self.num_normal_disk ,
-                                                 data_block=data_block_list,
-                                                 block_count_per_chunk=2)
+        data = self.striping_data_blocks_to_raid_disks(num_data_disks= self.num_normal_disk ,
+                                                 data_blocks=data_block_list,
+                                                 num_block_per_chunk=2)
         #add parity bits to column                                                 
         data_with_parity = (np.concatenate([data, self.compute_parity(data=data)], axis=0)).tolist()
         
@@ -44,31 +44,20 @@ class RAID(object):
         for disk, data in disk_iterator:
             disk.write(id = disk.get_id() , data=''.join(self.check_empty_char(datum) for datum in data), mode='w')
 
-    def read(self, fname, size):
-  
-        byte_ndarray = self._read_n(fname, self.N)
-        self.check(byte_ndarray)
-        data_ndarray = byte_ndarray[:-2]
-        flat_list = data_ndarray.ravel(1)[:size]
-        flat_str_list = [chr(e) for e in flat_list]
-        return ''.join(flat_str_list)
 
     def read_from_disk_and_generate_data(self):
-        
+        '''???'''
         res = self.read_all_non_parity_disk()
         res = [re.tolist() for re in res][0:self.num_normal_disk ]
         new_res = []
-        for i, j in self.block_to_disk_map:
+        for i, j in self.block_to_disk_mapping:
             new_res.append(res[i][j])
         logging.info(
             'Data is {}'.format(self._int_data_to_string(new_res, non_zero_flag=False)))
 
 
     def read_all_non_parity_disk(self, corrupted_disk_index=()):
-        """
-        Read the disks concurrently to a numpy array.
-        :return: Data from all the disks
-        """
+    
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.num_normal_disk) as executor:
             res = list(executor.map(FileObject.get_file_content(), self.disk_list))
 
@@ -147,7 +136,7 @@ class RAID(object):
         """
         # First get the block position in the RAID 6
 
-        disk_id, chuck_id = self.block_to_disk_map[block_global_index]
+        disk_id, chuck_id = self.block_to_disk_mapping[block_global_index]
         self.data_block_list[block_global_index] = new_data_block
         str_data = self._byte_to_str(new_data_block)
         int_data = self._str_to_order(str_data)[0]
@@ -177,7 +166,7 @@ class RAID(object):
         new_res = list(deepcopy(res))
         new_res[chuck_id] = self._byte_to_str(new_data_block)[0]
         new_res = "".join(new_res)
-        disk.write_to_disk(disk=disk, data="".join(self.no_empty_chr(val) for val in new_res),
+        disk.write(disk=disk, data="".join(self.no_empty_chr(val) for val in new_res),
                            mode='w')
 
     def _gaussian_elimination(self, augmented_matrix):
@@ -213,41 +202,43 @@ class RAID(object):
                                                                             np.nonzero(augmented_matrix[i])[0][0]])
         return res
 
-    #split 
-    def _split_block_into_data_disks(self, num_data_disks, data_block, block_count_per_chunk):
-        """
-        Split the data block from logical disk into raid data disks
-        :param data_disks_n: total number of data disks in raid 6
-        :param data_block: data blocks from logical disk that will be stripped into raid 6
-        :param block_count_per_chunk: assign how many data blocks to one data disk before moving to the next
-        :return:
-        """
-
-        self.block_to_disk_map = [None for _ in range(len(data_block))]
+    #striping from temp data disk to the raid disks
+    def striping_data_blocks_to_raid_disks(self, num_data_disks, data_blocks, num_block_per_chunk):
         disk_index = 0
-        data_disk_list = [[] for _ in range(num_data_disks)]
-        for i, block_i in enumerate(data_block):
-            data_disk_list[disk_index].append(self._str_to_order(block_i) if isinstance(block_i, str) else block_i)
-            self.block_to_disk_map[i] = (disk_index, len(data_disk_list[disk_index]) - 1)
-            if (i + 1) % block_count_per_chunk == 0:
+        data_blocks_per_disk = 0
+        data_disk = []
+        self.block_to_disk_mapping = []        
+        for _ in range(num_data_disks):
+            data_disk.append([])
+        #data blocks is the data in stripe size already
+        for i, j in enumerate(data_blocks):
+            if isinstance(j, str):
+                data_disk.append([])
+                data_disk[disk_index].append(self.str_to_int(j))
+            else:
+                data_disk[disk_index].append(j)
+
+            self.block_to_disk_mapping.append((disk_index, len(data_disk[disk_index]) - 1))
+
+            if (i + 1) % num_block_per_chunk == 0:
                 disk_index = (disk_index + 1) % num_data_disks
 
-        padding_block = self.generate_padding_block(byte_length=len(data_block[0]))
-        assert len(padding_block) == len(data_block[0])
-        assert isinstance(padding_block, type(data_block[0]))
-        data_block_per_disk = 0
-        for data in data_disk_list:
-            data_block_per_disk = max(data_block_per_disk, len(data))
-
-        for index, data in enumerate(data_disk_list):
-            if len(data) < data_block_per_disk:
-                for _ in range(data_block_per_disk - len(data)):
-                    data_disk_list[index].append(padding_block)
-        for data in data_disk_list:
-            assert len(data) == data_block_per_disk
-        return np.array(data_disk_list)
-
-   
+        padding_block = self.pad_char(length=len(data_blocks[0]))
+        
+        assert len(padding_block) == len(data_blocks[0])
+        
+        
+        for data in data_disk:
+            data_blocks_per_disk = max(data_blocks_per_disk, len(data))
+        
+        #padding to ensure the data block size in the disk is == stripe size
+        for index, data in enumerate(data_disk):
+            if len(data) < data_blocks_per_disk:
+                for _ in range(data_blocks_per_disk - len(data)):
+                    data_disk[index].append(padding_block)
+        for data in data_disk:
+            assert len(data) == data_blocks_per_disk
+        return np.array(data_disk)
 
     
     def check_empty_char(self, datum):
@@ -260,6 +251,21 @@ class RAID(object):
             return datum
 
 
+  
+    def pad_char(self, length):
+        assert length % 4 == 0
+        return np.array([' ' for _ in range(length // 4)])
+
+
+    def str_to_int(self, string_data):
+        assert isinstance(string_data[0], str)
+        res = []
+        for i in range(len(string_data)):
+            if len(string_data[i] > 0 ):
+                res.append(ord(string_data[i]))
+            else:
+                res.append(0)
+        return np.array(res, dtype=np.uint8)
     # Below are some conversion for different data formats: bytes, string, char, int
 
     @staticmethod
@@ -270,17 +276,6 @@ class RAID(object):
             if re == zero_flag:
                 res[i] = 0
         return np.array(res)
-
-    @staticmethod
-    def _str_to_order(stri):
-        assert isinstance(stri[0], str)
-        res = [ord(stri[i]) if len(stri[i]) > 0 else 0 for i in range(len(stri))]
-        return np.array(res)
-
-    @staticmethod
-    def generate_padding_block(byte_length):
-        assert byte_length % 4 == 0
-        return np.array(['' for _ in range(byte_length // 4)]).tostring()
 
     @staticmethod
     def _byte_to_str(byte):
