@@ -1,10 +1,12 @@
 from galois import GF2
 import numpy as np
 import concurrent.futures
-from file import File
+from fileObject import FileObject
 import math
 import logging
 from copy import deepcopy
+
+from gf.gfutils import *
 
 GF256 = GF2(2**8)
 
@@ -23,47 +25,53 @@ class RAID(object):
         
         self.data_blocks = None
         #gf stuff    
-        self.encode_matrix = self._generate_encode_matrix()
+        self.gf_matrix = self.gf.gen_matrix_A()
         self.parity_int = None
         self.parity_char = None
         self.block_to_disk_map = None
 
-
-
     #striping technique when writing file
-    def write_file(self, data_blocks):
-        self.data_blocks = data_blocks
-        data = self._split_block_into_data_disks(data_disks= self.num_normal_disk ,
-                                                 data_block=data_blocks,
+    def write_file(self, data_block_list):
+        self.data_blocks = data_block_list
+        data = self._split_block_into_data_disks(num_data_disks= self.num_normal_disk ,
+                                                 data_block=data_block_list,
                                                  block_count_per_chunk=2)
         #add parity bits to column                                                 
-        data_with_parity = np.concatenate([data, self.compute_parity(data=data)], axis=0)
+        data_with_parity = (np.concatenate([data, self.compute_parity(data=data)], axis=0)).tolist()
+        
+        disk_iterator = zip(self.disk_list, data_with_parity)
 
-        for disk, data in zip(self.disk_list, data_with_parity.tolist()):
-            disk.write_to_disk(disk=disk, data="".join(self.no_empty_chr(val) for val in data), mode='w')
+        for disk, data in disk_iterator:
+            disk.write(id = disk.get_id() , data=''.join(self.check_empty_char(datum) for datum in data), mode='w')
 
-
-    def check_empty_int(self, content):
-        return
-
-    def no_empty_chr(self, val):
+    def read(self, fname, size):
         """
-        convert a char to its order while convert '' to pre-defined number
-        :param val: original char
-        :return: a scalar
+        read size chunk from fname(RAID6 system)
         """
-        assert isinstance(val, str)
-        if val == '':
-            return chr(self.config.char_order_for_zero)
-        else:
-            return val
+        byte_ndarray = self._read_n(fname, self.N)
+        self.check(byte_ndarray)
+        data_ndarray = byte_ndarray[:-2]
+        flat_list = data_ndarray.ravel(1)[:size]
+        flat_str_list = [chr(e) for e in flat_list]
+        return ''.join(flat_str_list)
+
+    def read_from_disk_and_generate_data(self):
+        
+        res = self.read_all_data_disks()
+        res = [re.tolist() for re in res][0:self.num_normal_disk ]
+        new_res = []
+        for i, j in self.block_to_disk_map:
+            new_res.append(res[i][j])
+        logging.info(
+            'Data is {}'.format(self._int_data_to_string(new_res, non_zero_flag=False)))
+
 
     def read_all_data_disks(self, corrupted_disk_index=()):
         """
         Read the disks concurrently to a numpy array.
         :return: Data from all the disks
         """
-        with concurrent.futures.ThreadPoolExecutor(max_workers=self.config.disk_count) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=self.num_normal_disk) as executor:
             res = list(executor.map(File.get_file_content(), self.disk_list))
 
         removed_res = []
@@ -73,6 +81,8 @@ class RAID(object):
         removed_res = self._byte_to_int_all_disk(removed_res, conf=self.config)
 
         return removed_res
+
+    
 
     def compute_parity(self, data):
         """
@@ -110,7 +120,7 @@ class RAID(object):
         logging.log_str('Corrupted disks detected: {0}, preparing to disk recovery'.format(corrupted_disk_index))
 
         # Retrieve the good disks data: vector_e_new and corresponding encode matrix rows: matrix_a_new
-        matrix_a_new, vector_e_new = self.gf.recover_matrix(mat_a=self.encode_matrix,
+        matrix_a_new, vector_e_new = self.gf.recover_matrix(mat_a=self.gf_matrix,
                                                             vec_e=self.read_all_data_disks(corrupted_disk_index),
                                                             corrupt_index=corrupted_disk_index)
         data_strip_count = vector_e_new.shape[1]
@@ -205,14 +215,8 @@ class RAID(object):
                                                                             np.nonzero(augmented_matrix[i])[0][0]])
         return res
 
-    def _generate_encode_matrix(self):
-        """
-        Get the encoding matrix from GF field
-        :return: the matrix
-        """
-        return self.gf.gen_matrix_A()
-
-    def _split_block_into_data_disks(self, data_disks, data_block, block_count_per_chunk):
+    #split 
+    def _split_block_into_data_disks(self, num_data_disks, data_block, block_count_per_chunk):
         """
         Split the data block from logical disk into raid data disks
         :param data_disks_n: total number of data disks in raid 6
@@ -223,12 +227,12 @@ class RAID(object):
 
         self.block_to_disk_map = [None for _ in range(len(data_block))]
         disk_index = 0
-        data_disk_list = [[] for _ in range(data_disks_n)]
+        data_disk_list = [[] for _ in range(num_data_disks)]
         for i, block_i in enumerate(data_block):
             data_disk_list[disk_index].append(self._str_to_order(block_i) if isinstance(block_i, str) else block_i)
             self.block_to_disk_map[i] = (disk_index, len(data_disk_list[disk_index]) - 1)
             if (i + 1) % block_count_per_chunk == 0:
-                disk_index = (disk_index + 1) % data_disks_n
+                disk_index = (disk_index + 1) % num_data_disks
 
         padding_block = self.generate_padding_block(byte_length=len(data_block[0]))
         assert len(padding_block) == len(data_block[0])
@@ -245,18 +249,18 @@ class RAID(object):
             assert len(data) == data_block_per_disk
         return np.array(data_disk_list)
 
-    def read_from_disk_and_generate_data(self):
-        """
-        Read the data in data disks of RAID 6 and generate the original file content as a validation process
-        :return: None
-        """
-        res = self.read_all_data_disks()
-        res = [re.tolist() for re in res][0:self.config.data_disk_count]
-        new_res = []
-        for i, j in self.block_to_disk_map:
-            new_res.append(res[i][j])
-        logging.info(
-            'Data is {}'.format(self._int_data_to_string(new_res, non_zero_flag=False)))
+   
+
+    
+    def check_empty_char(self, datum):
+    
+        assert isinstance(datum, str)
+        if datum == '' or datum == None:
+            #chr 32 returns space
+            return chr(32)
+        else:
+            return datum
+
 
     # Below are some conversion for different data formats: bytes, string, char, int
 

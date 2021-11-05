@@ -4,7 +4,7 @@ import logging
 
 
 #Each file is a simulator file to the file system in OS
-class File(object):
+class FileObject(object):
 
     def __init__(self):
         self.data = None
@@ -29,6 +29,8 @@ class File(object):
         # digits_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         #randomly selects # of characters from above
         self.data = np.random.choice(ascii_list, size=data_size)
+        
+        
         logging.info('Generating string {0}'.format(str(self.data.decode('utf-8'))))
   
 

@@ -39,7 +39,7 @@ class DiskObject(object):
             data_content += [0 for _ in range(stripe_size - (size_content % stripe_size))]
         
         assert size_content % stripe_size == 0
-        
+        #get blocks of data
         for i in range(0, size_content , stripe_size):
             end_of_block_idx = min(size_content, i+stripe_size)
             data_blocks.append(data_content[i:end_of_block_idx])

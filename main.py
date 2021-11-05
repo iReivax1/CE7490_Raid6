@@ -8,8 +8,8 @@ import sys
 # sys.path.append(PAR_PATH)
 
 from RAID_File.raid_6 import RAID
-from file import File
-from partitions import DiskObject
+from fileObject import FileObject
+from diskObject import DiskObject
 import logging
 
 logging.basicConfig(filename='disk.log', level=logging.INFO)
@@ -18,10 +18,10 @@ RAID_settings = {
     'total_num_disk' : (2+3), #normal + parity disks
     'num_normal_disk' : 3, # 3 data disks
     'num_parity_disk': 2, #1 parity # 1 RS
-    'size_of_disk': 64, 
-    'size_of_file': 32, #in bits , int 8 is 8 bit.
+    'size_of_disk': 16, 
+    'size_of_file': 4, 
     'stripe_size' : 8,
-    'data_disks' : (64 * 6),  #num_normal_disk * size_of_disk
+    'data_disks' : (16 * 3),  #num_normal_disk * size_of_disk
     'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
 }
 
@@ -40,9 +40,9 @@ def main():
     raid_6 = RAID(disk_list=all_disk_arr, num_normal_disk=RAID_settings['num_normal_disk'], num_parity_disk=RAID_settings['num_parity_disk'])
 
     # Random Generate some files and store into the data disks
-    file = File()
+    file = FileObject()
     file.generate_random_data(data_size=RAID_settings['size_of_file'])
-    data_disk.write_to_disk(disk=data_disk, data=file.get_file_content)
+    data_disk.write(id=data_disk.get_id, data=file.get_file_content)
     data_block_list = data_disk.get_data_block(stripe_size=RAID_settings['stripe_size'])
 
     # Load data from data disk into RAID 6
