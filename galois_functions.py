@@ -11,35 +11,50 @@ import galois
 
 from coprimes_of_255 import coprimes_of_255
 
-
-
-
-
-
-
-
-
 GF256 = galois.GF(2**8)
 
 def convert_to_int(string):
+    '''
+    The purpose of this function is to convert a list of strings into a list of integers using the ord() function
+    This list of strings represent a file
+    The list must not be nested. i.e. it should be in the form ['abcd', '1234', 'a2c4']
+    '''
+    if not isinstance(string, list):
+        raise Exception(f'Drive should be a list, recieved a {type(string)}')
+    
     file = []
     for i in string:
-        file.append(ord(i))
+        unit = []
+        for k in i:
+            unit.append(ord(k))
+        file.append(unit)
     return file
 
 def convert_to_chr(array):
+    '''
+    The purpose of this function is to convert a numpy array into characters 
+    '''
     file = ""
     for i in array:
         file += chr(i)
     return file
 
 def convert_to_numpy(galois):
+    '''
+    The purpose of this function is to convert a galois field arry back into a numpy array
+    '''
     file = []
     for i in galois:
-        file.append(int(i))
+        unit = []
+        for k in i:
+            unit.append(int(k))
+        file.append(unit)
     return file
 
 def assign_drive_numbers(list_of_drives):
+    '''
+    This function assigns drive numbers to a list of drives for galois computations
+    '''
     drive_number = 0
     drive_list = []
     for i in list_of_drives:
@@ -148,16 +163,12 @@ def Q_decoder(Q, remaining_drives, missing_drive_number):
     
 def P_decoder(P, remaining_drives):
     '''
+    This function is for the case where 1 data drive fails
+    
     Parameters
     ----------
-    This function is for the case where 1 drive fails
-    
-    Q : The values of the backup Q drive encoded as GF(2**8)
+    Q : The values of the backup Q drive
     remaining_drives : the values of the remaining drives
-    **NOTE** - The drive_list should be in the format [drive, drive_number]
-    where drive is a list of integers; and
-    drive_number is a single integer
-    missing_drive_number: This should be the drive number of the missing drive. It should be a single integer
 
     Returns
     -------
@@ -171,7 +182,21 @@ def P_decoder(P, remaining_drives):
     return convert_to_numpy(D)
 
 def two_drives_lost(P, Q, remaining_drives, missing_drive_number_1, missing_drive_number_2):
+    '''
+    The purpose of this function is to reconstruct the drives if two data drives go missing
     
+    Parameters
+    ----------
+    P : The values stored in the P drive
+    Q : The values stored in the  Q drive
+    remaining_drives : The value of the remaining drives that were not lost
+    missing_drive_number_1 : The drive number of the first drive that was corrupted
+    missing_drive_number_2 : The drive number of the second drive that was corrupted
+
+    Returns
+    -------
+    The reconstructed drives in the format: drive1, drive2
+    '''
     
     #setting up the Galois parameters
     GF = galois.GF(2**8)
@@ -184,10 +209,8 @@ def two_drives_lost(P, Q, remaining_drives, missing_drive_number_1, missing_driv
     
     gyx = g**y/g**x
     
-    A = (gyx)*((gyx+GF(1))**-1)
-    print(A)
+    A = (gyx)/(gyx+GF(1))
     B = (g**(-x))/(gyx+GF(1))
-    print(B)
     
     Pxy = P_encoder(remaining_drives)
     print(Pxy)
@@ -200,33 +223,37 @@ def two_drives_lost(P, Q, remaining_drives, missing_drive_number_1, missing_driv
     return convert_to_numpy(Dx), convert_to_numpy(Dy)
 
 if __name__ == '__main__':
+    '''
+    The purpose of this code is to test if the functions above are operating as intended
+    '''
+    
     print('we will now test if the encoder and decoder works')
-    d0 = convert_to_int('l33t')
-    d1 = convert_to_int('0984')
-    d2 = convert_to_int('kzje')
+    d0 = convert_to_int(['l33t','1234'])
+    d1 = convert_to_int(['0984','asdw'])
+    d2 = convert_to_int(['kzje','2f4a'])
     drive_list = assign_drive_numbers([d0,d1,d2])
     print(f' the drives are {drive_list}')
     Q = Q_encoder(drive_list)
     P = P_encoder(drive_list)
     print(f' the backup Q drive is {Q}')
     
-    # print('\nnow imagine d0 is lost')
-    # remaining_drives = drive_list.copy()
-    # remaining_drives.pop(0)
-    # d0x = Q_decoder(Q, remaining_drives, 0)
-    # print(f' the original drive was \n {d0} \n and the recovered drive is \n {d0x}')    
+    print('\nnow imagine d0 is lost')
+    remaining_drives = drive_list.copy()
+    remaining_drives.pop(0)
+    d0x = Q_decoder(Q, remaining_drives, 0)
+    print(f' the original drive was \n {d0} \n and the recovered drive is \n {d0x}')    
     
-    # print('\nnow imagine d1 is lost')
-    # remaining_drives = drive_list.copy()
-    # remaining_drives.pop(1)
-    # d1x = Q_decoder(Q, remaining_drives, 1)
-    # print(f' the original drive was \n {d1} \n and the recovered drive is \n {d1x}')
+    print('\nnow imagine d1 is lost')
+    remaining_drives = drive_list.copy()
+    remaining_drives.pop(1)
+    d1x = Q_decoder(Q, remaining_drives, 1)
+    print(f' the original drive was \n {d1} \n and the recovered drive is \n {d1x}')
     
-    # print('\nnow imagine d2 is lost')
-    # remaining_drives = drive_list.copy()
-    # remaining_drives.pop(2)
-    # d2x = Q_decoder(Q, remaining_drives, 2)
-    # print(f' the original drive was \n {d2} \n and the recovered drive is \n {d2x}')
+    print('\nnow imagine d2 is lost')
+    remaining_drives = drive_list.copy()
+    remaining_drives.pop(2)
+    d2x = Q_decoder(Q, remaining_drives, 2)
+    print(f' the original drive was \n {d2} \n and the recovered drive is \n {d2x}')
     
     print('\nNow imagine d1 and d2 are lost')
     remaining_drives = drive_list.copy()
