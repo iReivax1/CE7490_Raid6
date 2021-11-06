@@ -16,7 +16,8 @@ GF256 = galois.GF(2**8)
 def convert_to_int(string):
     '''
     The purpose of this function is to convert a list of strings into a list of integers using the ord() function
-    This list of strings represent a file
+    This list of strings represent a drive
+    Each string is a file
     The list must not be nested. i.e. it should be in the form ['abcd', '1234', 'a2c4']
     '''
     if not isinstance(string, list):
@@ -30,13 +31,37 @@ def convert_to_int(string):
         file.append(unit)
     return file
 
+
+def drives_to_int(list_of_drives):
+    '''
+    The purpose of this function is to convert a list of drives into integers through recursion
+    Each drive consists of a list of strings
+    Each string represents a file
+    '''
+    
+    drives = []
+    
+    arr = np.array(list_of_drives)
+    if bool(arr.ndim > 1):
+        for i in list_of_drives:
+            drives.append(drives_to_int(i))
+            # print(bool(np.array(i).ndim > 1))
+    else:
+        # print(list_of_drives)
+        drives = convert_to_int(list_of_drives)
+    
+    return drives
+
 def convert_to_chr(array):
     '''
     The purpose of this function is to convert a numpy array into characters 
     '''
-    file = ""
+    file = []
     for i in array:
-        file += chr(i)
+        unit = ""
+        for k in i:
+            unit += chr(k)
+        file.append(unit)
     return file
 
 def convert_to_numpy(galois):
@@ -213,10 +238,9 @@ def two_drives_lost(P, Q, remaining_drives, missing_drive_number_1, missing_driv
     B = (g**(-x))/(gyx+GF(1))
     
     Pxy = P_encoder(remaining_drives)
-    print(Pxy)
     Qxy = Q_encoder(remaining_drives)
-    print(Qxy)
     
+    #reconstruction
     Dx = (A*(P+Pxy)) + (B*(Q+Qxy))
     Dy = (P+Pxy) + Dx
     
@@ -228,11 +252,13 @@ if __name__ == '__main__':
     '''
     
     print('we will now test if the encoder and decoder works')
-    d0 = convert_to_int(['l33t','1234'])
-    d1 = convert_to_int(['0984','asdw'])
-    d2 = convert_to_int(['kzje','2f4a'])
-    drive_list = assign_drive_numbers([d0,d1,d2])
+    d0 = ['l33t','1234']
+    d1 = ['0984','asdw']
+    d2 = ['kzje','2f4a']
+    list_of_drives = [d0,d1,d2]
+    drive_list = assign_drive_numbers(drives_to_int(list_of_drives))
     print(f' the drives are {drive_list}')
+    
     Q = Q_encoder(drive_list)
     P = P_encoder(drive_list)
     print(f' the backup Q drive is {Q}')
@@ -260,6 +286,8 @@ if __name__ == '__main__':
     remaining_drives.pop(1)
     remaining_drives.pop(1)
     d1x, d2x = two_drives_lost(P,Q, remaining_drives, 1, 2)
-    print(f' \nthe original drive was \n {d1} \n and the recovered drive is \n {d1x}')
-    print(f' \nthe original drive was \n {d2} \n and the recovered drive is \n {d2x}')
+    print(f' \nthe original drive was \n {convert_to_int(d1)} \n and the recovered drive is \n {d1x}')
+    print(f' \nthe original drive was \n {convert_to_int(d2)} \n and the recovered drive is \n {d2x}')
+    print(f' \nthe original drive in characters was \n {d1} \n and the recovered drive is \n {convert_to_chr(d1x)}')
+    print(f' \nthe original drive in characters was \n {d2} \n and the recovered drive is \n {convert_to_chr(d2x)}')
     
