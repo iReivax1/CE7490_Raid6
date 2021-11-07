@@ -42,9 +42,19 @@ def create_parities(list_of_drives, drive_ids=None, skip_P = False, skip_Q = Fal
     
     
     return P, Q, drive_list #we output the drive list for accounting purposes, but mostly we expect this output to be ignored
+
+def check_for_failures(drive_list, P, Q):
+    
+    P_check = gf.P_encoder(drive_list) == P
+    Q_check = gf.Q_encoder(drive_list) == Q
+    
+    if P_check.all() and Q_check.all():
+        return "No failures"
+    else:
+        return "At least one failure"
     
 
-def galois_drive_recovery_wrapper(mode, remainig_drives, P, Q, missing_drive_1, missing_drive_2):
+def galois_drive_recovery_wrapper(mode, remaining_drives = None, P = None, Q = None, missing_drive_id_1 = None, missing_drive_id_2 = None):
     '''
     ONE DRIVE LOST
     --------------
@@ -76,7 +86,35 @@ def galois_drive_recovery_wrapper(mode, remainig_drives, P, Q, missing_drive_1, 
         >>> recompute P and Q drives
     
     '''
-    return
+    if mode == 1:
+        return gf.P_decoder(P, remaining_drives, missing_drive_id_1)
+    
+    elif mode == 2:
+        return gf.P_encoder(remaining_drives)
+    
+    elif mode == 3:
+        return gf.Q_encoder(remaining_drives)
+    
+    elif mode == 4:
+        fixed_drive = gf.Q_decoder(Q, remaining_drives, missing_drive_id_1)
+        remaining_drives.append(fixed_drive)
+        P = gf.P_encoder(remaining_drives)
+        return fixed_drive, P
+    
+    elif mode == 5:
+        fixed_drive = gf.P_decoder(Q, remaining_drives, missing_drive_id_1)
+        remaining_drives.append(fixed_drive)
+        P = gf.Q_encoder(remaining_drives)
+        return fixed_drive, Q
+    
+    elif mode == 6:
+        return gf.two_drives_lost(P, Q, remaining_drives, missing_drive_id_1, missing_drive_id_2)
+    
+    elif mode == 7:
+        P = gf.P_encoder(remaining_drives)
+        Q = gf.Q_encoder(remaining_drives)
+        return P, Q
+
 
 
 if __name__ == '__main__':
@@ -89,7 +127,7 @@ if __name__ == '__main__':
     
     P2, Q2, DL2 = create_parities(list_of_drives)
     
-    print('Check that the Q creation function is working')
+    print('Check that the parity creation function is working')
     print('Are the calculated Ps equal?')
     print(P1==P2)
     print('Are the calculated Qs equal?')
@@ -111,3 +149,12 @@ if __name__ == '__main__':
     Pc, Qc, _ = create_parities(list_of_drives, store_as_chr = True)
     print(Pi, Pc, gf.convert_to_int(Pc))
     print(Qi, Qc, gf.convert_to_int(Qc))
+    
+    
+    print('\n \n Check for failures')
+    broken_drives = DL1.copy()
+    broken_drives.pop(1)
+    print('Test1: one broken drive')
+    print(f' test returns: {check_for_failures(broken_drives, P1, Q1)}')
+    print('Test2: no broken drives')
+    print(f' test returns: {check_for_failures(DL1, P1, Q1)}')

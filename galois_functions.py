@@ -76,15 +76,15 @@ def convert_to_numpy(galois):
         file.append(unit)
     return file
 
-def assign_drive_numbers(list_of_drives):
+def assign_drive_ids(list_of_drives):
     '''
-    This function assigns drive numbers to a list of drives for galois computations
+    This function assigns drive ids to a list of drives for galois computations
     '''
-    drive_number = 0
+    drive_id = 0
     drive_list = []
     for i in list_of_drives:
-        drive_list.append([i,drive_number])
-        drive_number += 1
+        drive_list.append([i,drive_id])
+        drive_id += 1
     return drive_list
 
 def drive_to_gf(drive):
@@ -94,16 +94,16 @@ def drive_to_gf(drive):
     GF = galois.GF(2**8)
     return GF(drive)
 
-def drive_encoder(drive, drive_number):
+def drive_encoder(drive, drive_ids):
     '''
     file: a list of non-negative integers of arbitary length, where each integer <=255
-    drive_number: the unique number associated with the drive in the range of [0,255]
+    drive_ids: the unique ids associated with the drive in the range of [0,255]
     returns: the GF encoding for the drive, multiple GF encodings will be summed to form the Q backup drive
     '''
     GF = galois.GF(2**8)
     g = GF(2)
     cp255 = coprimes_of_255()
-    i = cp255[drive_number]
+    i = cp255[drive_ids]
     m = drive_to_gf(drive)
     q = (g**i)*m
     return q
@@ -113,9 +113,9 @@ def Q_encoder(drive_list):
     Parameters
     ----------
     drive_list : The value of the list of drives to be backed up. 
-    **NOTE** - The drive_list should be in the format [drive, drive_number]
+    **NOTE** - The drive_list should be in the format [drive, drive_id]
     where drive is a list of integers; and
-    drive_number is a single integer
+    drive_id is a single integer
 
     Returns
     -------
@@ -138,9 +138,9 @@ def P_encoder(drive_list):
     Parameters
     ----------
     drive_list : The value of the list of drives to be backed up. 
-    **NOTE** - The drive_list should be in the format [drive, drive_number]
+    **NOTE** - The drive_list should be in the format [drive, drive_id]
     where drive is a list of integers; and
-    drive_number is a single integer
+    drive_id is a single integer
 
     Returns
     -------
@@ -159,7 +159,7 @@ def P_encoder(drive_list):
     return P
 
 
-def Q_decoder(Q, remaining_drives, missing_drive_number):
+def Q_decoder(Q, remaining_drives, missing_drive_id):
     '''
     Parameters
     ----------
@@ -167,10 +167,10 @@ def Q_decoder(Q, remaining_drives, missing_drive_number):
     
     Q : The values of the backup Q drive encoded as GF(2**8)
     remaining_drives : the values of the remaining drives
-    **NOTE** - The drive_list should be in the format [drive, drive_number]
+    **NOTE** - The drive_list should be in the format [drive, drive_id]
     where drive is a list of integers; and
-    drive_number is a single integer
-    missing_drive_number: This should be the drive number of the missing drive. It should be a single integer
+    drive_id is a single integer
+    missing_drive_id: This should be the drive id of the missing drive. It should be a single integer
 
     Returns
     -------
@@ -180,13 +180,13 @@ def Q_decoder(Q, remaining_drives, missing_drive_number):
     GF = galois.GF(2**8)
     g = GF(2)
     cp255 = coprimes_of_255()
-    i = cp255[missing_drive_number]
+    i = cp255[missing_drive_id]
     
     Qx = Q_encoder(remaining_drives)
     D = (Q+Qx)/(g**i)
-    return convert_to_numpy(D)
+    return [convert_to_numpy(D), missing_drive_id]
     
-def P_decoder(P, remaining_drives):
+def P_decoder(P, remaining_drives, missing_drive_id):
     '''
     This function is for the case where 1 data drive fails
     
@@ -204,9 +204,9 @@ def P_decoder(P, remaining_drives):
     
     Px = P_encoder(remaining_drives)
     D = P-Px
-    return convert_to_numpy(D)
+    return [convert_to_numpy(D), missing_drive_id]
 
-def two_drives_lost(P, Q, remaining_drives, missing_drive_number_1, missing_drive_number_2):
+def two_drives_lost(P, Q, remaining_drives, missing_drive_id_1, missing_drive_id_2):
     '''
     The purpose of this function is to reconstruct the drives if two data drives go missing
     
@@ -215,8 +215,8 @@ def two_drives_lost(P, Q, remaining_drives, missing_drive_number_1, missing_driv
     P : The values stored in the P drive
     Q : The values stored in the  Q drive
     remaining_drives : The value of the remaining drives that were not lost
-    missing_drive_number_1 : The drive number of the first drive that was corrupted
-    missing_drive_number_2 : The drive number of the second drive that was corrupted
+    missing_drive_id_1 : The drive id of the first drive that was corrupted
+    missing_drive_id_2 : The drive id of the second drive that was corrupted
 
     Returns
     -------
@@ -229,8 +229,8 @@ def two_drives_lost(P, Q, remaining_drives, missing_drive_number_1, missing_driv
     cp255 = coprimes_of_255()
     
     #precomputed constants
-    x = cp255[missing_drive_number_1]
-    y = cp255[missing_drive_number_2]
+    x = cp255[missing_drive_id_1]
+    y = cp255[missing_drive_id_2]
     
     gyx = g**y/g**x
     
@@ -244,7 +244,7 @@ def two_drives_lost(P, Q, remaining_drives, missing_drive_number_1, missing_driv
     Dx = (A*(P+Pxy)) + (B*(Q+Qxy))
     Dy = (P+Pxy) + Dx
     
-    return convert_to_numpy(Dx), convert_to_numpy(Dy)
+    return [convert_to_numpy(Dx), missing_drive_id_1], [convert_to_numpy(Dy), missing_drive_id_2]
 
 if __name__ == '__main__':
     '''
@@ -256,7 +256,7 @@ if __name__ == '__main__':
     d1 = ['0984','asdw']
     d2 = ['kzje','2f4a']
     list_of_drives = [d0,d1,d2]
-    drive_list = assign_drive_numbers(drives_to_int(list_of_drives))
+    drive_list = assign_drive_ids(drives_to_int(list_of_drives))
     print(f' the drives are {drive_list}')
     
     Q = Q_encoder(drive_list)
@@ -267,27 +267,27 @@ if __name__ == '__main__':
     remaining_drives = drive_list.copy()
     remaining_drives.pop(0)
     d0x = Q_decoder(Q, remaining_drives, 0)
-    print(f' the original drive was \n {d0} \n and the recovered drive is \n {d0x}')    
+    print(f' the original drive was \n {d0} \n and the recovered drive is \n {d0x[0]}')    
     
     print('\nnow imagine d1 is lost')
     remaining_drives = drive_list.copy()
     remaining_drives.pop(1)
     d1x = Q_decoder(Q, remaining_drives, 1)
-    print(f' the original drive was \n {d1} \n and the recovered drive is \n {d1x}')
+    print(f' the original drive was \n {d1} \n and the recovered drive is \n {d1x[0]}')
     
     print('\nnow imagine d2 is lost')
     remaining_drives = drive_list.copy()
     remaining_drives.pop(2)
     d2x = Q_decoder(Q, remaining_drives, 2)
-    print(f' the original drive was \n {d2} \n and the recovered drive is \n {d2x}')
+    print(f' the original drive was \n {d2} \n and the recovered drive is \n {d2x[0]}')
     
     print('\nNow imagine d1 and d2 are lost')
     remaining_drives = drive_list.copy()
     remaining_drives.pop(1)
     remaining_drives.pop(1)
     d1x, d2x = two_drives_lost(P,Q, remaining_drives, 1, 2)
-    print(f' \nthe original drive was \n {convert_to_int(d1)} \n and the recovered drive is \n {d1x}')
-    print(f' \nthe original drive was \n {convert_to_int(d2)} \n and the recovered drive is \n {d2x}')
-    print(f' \nthe original drive in characters was \n {d1} \n and the recovered drive is \n {convert_to_chr(d1x)}')
-    print(f' \nthe original drive in characters was \n {d2} \n and the recovered drive is \n {convert_to_chr(d2x)}')
+    print(f' \nthe original drive was \n {convert_to_int(d1)} \n and the recovered drive is \n {d1x[0]}')
+    print(f' \nthe original drive was \n {convert_to_int(d2)} \n and the recovered drive is \n {d2x[0]}')
+    print(f' \nthe original drive in characters was \n {d1} \n and the recovered drive is \n {convert_to_chr(d1x[0])}')
+    print(f' \nthe original drive in characters was \n {d2} \n and the recovered drive is \n {convert_to_chr(d2x[0])}')
     
