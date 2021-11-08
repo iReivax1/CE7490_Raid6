@@ -12,13 +12,6 @@ import galois
 from coprimes_of_255 import coprimes_of_255
 
 
-
-
-
-
-
-
-
 GF256 = galois.GF(2**8)
 
 def convert_to_int(string):

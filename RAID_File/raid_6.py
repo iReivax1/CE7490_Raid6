@@ -95,7 +95,7 @@ class RAID(object):
         if np.count_nonzero(res) == 0:
             logging.log_str('No corruption')
         else:
-            logging.log_str('Exist corruption!!!', mode='error')
+            logging.log_str('Exist corruption!!!')
         pass
 
     def recover_disk(self, corrupted_disk_index=()):
