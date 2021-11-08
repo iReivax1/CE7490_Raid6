@@ -8,15 +8,18 @@ from numpy.core.shape_base import block
 
 class DiskObject(object):
     
-    def __init__(self, dir, id, size, type='data', override=True):
+    def __init__(self, dir, id, size, type='data'):
         self.id = id
         self.size = size
         self.type = type
-        self.override = True
+        if self.type == 'P' or self.type == 'Q':
+            self.override = False
+        else:
+            self.override = True
         self.dir = self.create_folders(disk_dir=os.path.join(dir, 'disk_%d' % id))
         self.data_file_path = None
         self.data_blocks = None
-
+    
     
     def get_id(self):
         return self.id
@@ -51,6 +54,7 @@ class DiskObject(object):
             end_of_block_idx = min(size_content, i+stripe_size)
             data_blocks.append(data_content[i:end_of_block_idx])
         self.data_blocks = data_blocks
+        print(data_blocks)
         return data_blocks
     
 
@@ -61,7 +65,7 @@ class DiskObject(object):
             os.makedirs(disk_dir)
             logging.info('Disk {0} is created at {1}'.format(self.id, str(disk_dir)))
         else: #if exists alr delete 
-            if self.override== True:
+            if self.override == True:
                 shutil.rmtree(disk_dir)          
                 os.makedirs(disk_dir)
             else :

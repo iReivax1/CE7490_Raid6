@@ -10,8 +10,13 @@ import galois_functions as gf
 def create_parities(list_of_drives, drive_ids=None, skip_P = False, skip_Q = False, store_as_chr=False):    
     
     if drive_ids == None:
-
-        drive_list = gf.assign_drive_numbers(gf.drives_to_int(list_of_drives))
+        drive_list = []
+             
+        for drive_idx , drive_object in enumerate(list_of_drives):
+            drive_id = drive_object.get_id()
+            # drive_name = 'drive_'+ str(drive_id)
+            drive_list.append([str(drive_id), drive_id])
+        # drive_list = gf.assign_drive_ids(gf.drives_to_int(list_of_drives))
     
     else:
     
@@ -20,9 +25,13 @@ def create_parities(list_of_drives, drive_ids=None, skip_P = False, skip_Q = Fal
         
         drive_list = []
         count = 0
-        for i in list_of_drives:
-            drive_list.append([gf.convert_to_int(i), drive_ids[count]])
-            count += 1
+        for drive_idx , drive_object in enumerate(list_of_drives):
+            drive_id = drive_object.get_id()
+            drive_name = 'drive_'+drive_id
+            drive_list.append([gf.convert_to_int(drive_name), drive_id])
+        # for i in list_of_drives:
+        #     drive_list.append([gf.convert_to_int(i), drive_ids[count]])
+        #     count += 1
     if not skip_P:
         P = gf.P_encoder(drive_list)
     else:
@@ -40,7 +49,8 @@ def create_parities(list_of_drives, drive_ids=None, skip_P = False, skip_Q = Fal
         P = gf.convert_to_chr(P)
         Q = gf.convert_to_chr(Q)
     
-    
+    P = gf.convert_to_chr(gf.convert_to_numpy(P))
+    Q = gf.convert_to_chr(gf.convert_to_numpy(Q))
     return P, Q, drive_list #we output the drive list for accounting purposes, but mostly we expect this output to be ignored
 
 def check_for_failures(drive_list, P, Q):
