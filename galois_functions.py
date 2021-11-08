@@ -42,12 +42,11 @@ def drives_to_int(list_of_drives):
     drives = []
     
     arr = np.array(list_of_drives)
-    if bool(arr.ndim > 1):
+    if bool(arr.ndim > 1): #recurssion if the list of drives is nested
         for i in list_of_drives:
             drives.append(drives_to_int(i))
-            # print(bool(np.array(i).ndim > 1))
-    else:
-        # print(list_of_drives)
+            
+    else: #only when the list of drives is no longer nested, i.e. it is only a single drive, convert the values in the drive to int
         drives = convert_to_int(list_of_drives)
     
     return drives
@@ -236,10 +235,10 @@ def two_drives_lost(P, Q, remaining_drives, missing_drive_id_1, missing_drive_id
     
     A = (gyx)/(gyx+GF(1))
     B = (g**(-x))/(gyx+GF(1))
-    
+
     Pxy = P_encoder(remaining_drives)
     Qxy = Q_encoder(remaining_drives)
-    
+
     #reconstruction
     Dx = (A*(P+Pxy)) + (B*(Q+Qxy))
     Dy = (P+Pxy) + Dx
