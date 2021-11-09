@@ -45,7 +45,7 @@ def main():
     
     #init raid controller for the disks
     raid_6 = RAID(disk_list=all_disk_arr, num_normal_disk=RAID_settings['num_normal_disk'],parity_disk=parity_disk, q_disk=Q_disk )
-
+    
     # Random Generate some files and store into the data disks
     #Files contain data to be stored in the disks which are simulated as files IRL computer
     for i in raid_6.get_disk_list():
@@ -56,10 +56,11 @@ def main():
         print(file.data)
         i.write(file.data)
         i.get_data_block(RAID_settings['stripe_size'])
-        print(i.data_blocks)
         print('\n')
         
     
+    Qs = raid_6.compute_Q(RAID_settings['stripe_size'])
+
     
     file = FileObject()
     file.generate_random_data(data_size=RAID_settings['size_of_file'])

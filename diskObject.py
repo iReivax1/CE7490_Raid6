@@ -25,12 +25,12 @@ class DiskObject(object):
         return self.disk_id
 
     def read(self):
-        with open(os.path.join(self.disk_dir, 'disk_%d' % self.disk_id), 'r') as f:
+        with open(os.path.join(self.disk_dir, 'disk_%d' % self.disk_id), 'r', encoding="utf-8") as f:
             return f.read()
 
 
     def write(self, data):
-        with open(os.path.join(self.disk_dir, 'disk_%d' % self.disk_id), 'w') as f:
+        with open(os.path.join(self.disk_dir, 'disk_%d' % self.disk_id), 'w', encoding="utf-8") as f:
             for i in data:
                 f.write(i)
             logging.info('Write done at{0}'.format(self.disk_id))
@@ -53,7 +53,7 @@ class DiskObject(object):
         for i in range(0, size_content , stripe_size):
             end_of_block_idx = min(size_content, i+stripe_size)
             data_blocks.append(data_content[i:end_of_block_idx])
-        self.data_blocks = data_blocks
+        # self.data_blocks = data_blocks
         print(data_blocks)
         return data_blocks
     

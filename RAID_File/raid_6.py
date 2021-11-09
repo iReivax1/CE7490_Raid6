@@ -4,7 +4,8 @@ import concurrent.futures
 from fileObject import FileObject
 import logging
 from copy import deepcopy
-from galois_wrappers import create_parities
+from galois_wrappers_v2 import create_parities
+import galois_functions as gf
 
 
 GF256 = galois.GF(2**8)
@@ -78,6 +79,17 @@ class RAID(object):
     def get_disk_list(self):
         return self.disk_list
     
+    def compute_Q(self, stripe_size):
+        Q = GF256(0)
+        for i in self.get_disk_list():
+            q = gf.drive_encoder(gf.convert_to_int(i.get_data_block(stripe_size)), i.get_id())
+            print(q)
+            Q = Q + q
+        Q = gf.convert_to_chr(gf.convert_to_numpy(Q))
+        self.q_disk.write(Q)
+        return Q
+            
+            
 
     def compute_parity(self, data):
         """
