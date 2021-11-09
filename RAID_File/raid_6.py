@@ -4,22 +4,26 @@ import concurrent.futures
 from fileObject import FileObject
 import logging
 from copy import deepcopy
-from galois_wrappers import create_parities
-
+from galois_wrappers_v2 import create_parities
+import galois_functions as gf
+from coprimes_of_255 import coprimes_of_255
 
 GF256 = galois.GF(2**8)
 
 class RAID(object):
 
-    def __init__(self, disk_list,num_normal_disk,parity_disk, q_disk, gf=None):
+    def __init__(self, disk_list, num_normal_disk, parity_disk, q_disk, stripe_size):
         super().__init__()
         '''
         disk_list is all the normal data list, indexed from 0 to num_of_normal_disk
         '''
         self.disk_list = disk_list
         self.num_normal_disk = num_normal_disk
-        self.parity_disk = parity_disk 
+        self.p_disk = parity_disk 
         self.q_disk = q_disk
+        self.stripe_size = stripe_size
+
+        
         # if gf is None:
         #     self.gf = GF256(num_data_disk=self.num_normal_disk,
         #                           num_checksum=self.num_parity_disk)
@@ -32,51 +36,133 @@ class RAID(object):
         self.parity_int = None
         self.parity_char = None
         self.block_to_disk_mapping = None
-
-    #striping technique when writing file. 
-    def stripe_data_build_parity(self, data_block_list):
-        self.data_blocks = data_block_list
-        data = self.striping_data_blocks_to_raid_disks(num_data_disks= self.num_normal_disk ,
-                                                 data_blocks=data_block_list)
-        #disk list is a list ob diskobject
-
-        # P, Q, drive_list = create_parities(self.disk_list)
-        # print(P)
-        # print(Q)
-        # self.parity_disk.write(id =-1 , data=P)
-        # self.q_disk.write(id =-2 , data=Q)
-                                                           
-        disk_iterator = zip(self.disk_list, data)
-        print (disk_iterator)
-        for disk, data in disk_iterator:
-            print(disk)
-            disk.write(id = disk.get_id() , data=''.join(self.check_empty_char(datum) for datum in data))
+        self.set_stripe_size()
         
-        # return P , Q
+    def set_stripe_size(self):
+        #Set up the strie_size for all disks
+        for i in self.disk_list:
+            i.stripe_size = self.stripe_size
+        self.p_disk.stripe_size = self.stripe_size
+        self.q_disk.stripe_size = self.stripe_size
+        
+    #striping technique when writing file. 
+    # def stripe_data_build_parity(self, data_block_list):
+    #     self.data_blocks = data_block_list
+    #     data = self.striping_data_blocks_to_raid_disks(num_data_disks= self.num_normal_disk ,
+    #                                              data_blocks=data_block_list)
+    #     #disk list is a list ob diskobject
 
-
+    #     # P, Q, drive_list = create_parities(self.disk_list)
+    #     # print(P)
+    #     # print(Q)
+    #     # self.parity_disk.write(id =-1 , data=P)
+    #     # self.q_disk.write(id =-2 , data=Q)
+                                                           
+    #     disk_iterator = zip(self.disk_list, data)
+    #     print (disk_iterator)
+    #     for disk, data in disk_iterator:
+    #         print(disk)
+    #         disk.write(id = disk.get_id() , data=''.join(self.check_empty_char(datum) for datum in data))
+        
+    #     # return P , Q
    
-    #corrupted disks 
-    def read_all_non_parity_disk(self, corrupted_disk_index=()):
+    # #corrupted disks 
+    # def read_all_non_parity_disk(self, corrupted_disk_index=()):
     
-        with concurrent.futures.ThreadPoolExecutor(max_workers=self.num_normal_disk) as executor:
-            res = list(executor.map(FileObject.read(id=i), self.disk_list))
+    #     with concurrent.futures.ThreadPoolExecutor(max_workers=self.num_normal_disk) as executor:
+    #         res = list(executor.map(FileObject.read(id=i), self.disk_list))
 
-        removed_res = []
-        for i, re in enumerate(res):
-            if i not in corrupted_disk_index:
-                removed_res.append(re)
+    #     removed_res = []
+    #     for i, re in enumerate(res):
+    #         if i not in corrupted_disk_index:
+    #             removed_res.append(re)
 
-        return removed_res
+    #     return removed_res
     
+    
+    
+    ###### Utilities
     def get_disk_ids(self):
         disk_ids = []
         for i in self.disk_list:
-            disk_ids.append(i.id)
+            disk_ids.append(i.get_id())
         return disk_ids
-
     
+    def get_disk_list(self):
+        return self.disk_list
+    
+    
+    ##### For the creation of parity drives
+    def compute_Q(self, write = False):
+        '''
+        if write is True, will write to the corresponding disk as chr()
+        Otherwise will return int() as a numpy array
+        '''
+        
+        Q = GF256(0)
+        for i in self.get_disk_list():
+            q = gf.q_drive_encoder(gf.convert_to_int(i.get_data_block()), i.get_id())
+            Q = Q + q
+        Q = gf.convert_to_numpy(Q)
+        if write:
+            Q = gf.convert_to_chr(Q)
+            self.q_disk.write(Q)
+            return "Q has been computed and written to the Q drive"
+        else:
+            return Q
+            
+    def compute_P(self, write = False):
+        '''
+        if write is True, will write to the corresponding disk as chr()
+        Otherwise will return int() as a numpy array
+        '''
+        
+        P = GF256(0)
+        for i in self.get_disk_list():
+            p = gf.drive_to_gf(gf.convert_to_int(i.get_data_block()))
+            P = P + p
+        P = gf.convert_to_numpy(P)
+        if write:
+            P = gf.convert_to_chr(P)
+            self.p_disk.write(P)
+            return "P has been computed and written to the P drive"        
+        else:
+            return P
+    
+    
+    ##### Retrieve parity information
+    def get_Q(self):
+        '''
+        returns an int() numpy array
+        '''
+        return gf.convert_to_int(self.q_disk.get_data_block())
+    
+    def get_P(self):
+        '''
+        returns an int() numpy array
+        '''
+        return gf.convert_to_int(self.p_disk.get_data_block())
+    
+    
+    ##### Check for drive failure
+    def check_for_failure(self):
+        P_test = self.compute_P()
+        Q_test = self.compute_Q()
+        P = self.get_P()
+        Q = self.get_Q()
+        
+        P_check = P_test == P
+        Q_check = Q_test == Q
+        
+        # print(P_check)
+        # print(Q_check)
+        
+        if P_check and Q_check:
+            return "No failures"
+        else:
+            return "At least one failure"
 
+            
     def compute_parity(self, data):
         """
         Compute the parity giving the data
