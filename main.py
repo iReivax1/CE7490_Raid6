@@ -25,6 +25,7 @@ RAID_settings = {
     'data_disks' : (16 * 8),  #num_normal_disk * size_of_disk
     'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
     # 'root_dir' : '/Users/yipji/Offline Documents/Git Folder/CE7490_Raid6',
+    'root_dir': os.getcwd() + '\\C_drive'
 }
 
 def main():
@@ -55,7 +56,7 @@ def main():
     #data_block_list = array of data blocks of sized == stripe size. each block will be assigned to one disks
     data_block_list = temp_data_disk.get_data_block(stripe_size=RAID_settings['stripe_size'])
     #put the data into the different raid 6 disks and P, Q disks
-    raid_6.stripe_data_build_parity(data_block_list=data_block_list)
+    # raid_6.stripe_data_build_parity(data_block_list=data_block_list)
 
 
     

@@ -72,9 +72,11 @@ class RAID(object):
     def get_disk_ids(self):
         disk_ids = []
         for i in self.disk_list:
-            disk_ids.append(i.id)
+            disk_ids.append(i.get_id())
         return disk_ids
-
+    
+    def get_disk_list(self):
+        return self.disk_list
     
 
     def compute_parity(self, data):

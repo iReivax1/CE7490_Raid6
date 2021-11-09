@@ -564,3 +564,11 @@ INFO:root:Write done at4
 INFO:root:Write done at5
 INFO:root:Write done at6
 INFO:root:Write done at7
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['d' 'v' 'd' 'u' 't' 'u' 'v' 'w' 'o' 'n' 'h' 's' 'g' 'n' 'g' 'h' 'r' 'p'
+ 'o' 'i' 'x' 'o' 's' 'h' 'o' 'y' 'j' 'd' 'g' 'c' 'v' 'g']
+INFO:root:Write done at-9
+INFO:root:START : Write to RAID 6
