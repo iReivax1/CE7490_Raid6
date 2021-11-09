@@ -434,3 +434,24 @@ INFO:root:Generating string ['u' 'c' 'f' 'l' 'v' 'n' 'g' 'e' 'k' 'd' 'i' 'p' 'f'
  'e' 'h' 'i' 'd' 'v' 'r' 'i' 'm' 'b' 'h' 'x' 'b' 'c' 'i']
 INFO:root:Write done at-9
 INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Start
+INFO:root:Disk 5 is created at /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_5
+INFO:root:Disk 6 is created at /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_6
+INFO:root:Disk 7 is created at /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_7
+INFO:root:Disk 8 is created at /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_8
+INFO:root:Disk 9 is created at /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_9
+INFO:root:Disk -9 is created at /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_-9
+INFO:root:Disk /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_-1 is already created
+INFO:root:Disk -2 is created at /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_-2
+INFO:root:Generating string ['n' 'r' 'n' 'e' 'l' 'n' 'n' 't' 'j' 'a' 'a' 'g' 'f' 'i' 't' 'l' 'f' 'l'
+ 'q' 'g' 'x' 'y' 'e' 'c' 'd' 'e' 'i' 'p' 'e' 'r' 'i' 'p']
+INFO:root:Write done at-9
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_-1 is already created
+INFO:root:Disk /Users/yipji/Offline Documents/Git Folder/CE7490_Raid6\disk_-2 is already created
+INFO:root:Generating string ['e' 'v' 'l' 'x' 'k' 'x' 'k' 'h' 'y' 'z' 'm' 'g' 'n' 'a' 'x' 'o' 'q' 't'
+ 'w' 'y' 'i' 'x' 'r' 'l' 'a' 'z' 'd' 'x' 'r' 'v' 'i' 's']
+INFO:root:Write done at-9
+INFO:root:START : Write to RAID 6

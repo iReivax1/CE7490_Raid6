@@ -67,6 +67,12 @@ class RAID(object):
                 removed_res.append(re)
 
         return removed_res
+    
+    def get_disk_ids(self):
+        disk_ids = []
+        for i in self.disk_list:
+            disk_ids.append(i.id)
+        return disk_ids
 
     
 
