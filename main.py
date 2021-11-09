@@ -92,7 +92,7 @@ if __name__ == '__main__':
         i.get_data_block()
         # print('\n')
         
-    
+    print('------------START UNIT TESTS---------------')
     print(raid_6.compute_Q(write = True))
     print(raid_6.compute_P(write = True))
     print('Test if the P and Q drives have been computed and stored correctly')
