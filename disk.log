@@ -506,3 +506,61 @@ INFO:root:Write done at4
 INFO:root:Write done at5
 INFO:root:Write done at6
 INFO:root:Write done at7
+INFO:root:Start
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Generating string ['o' 'q' 't' 'r' 'o' 'v' 'd' 'z' 'z' 'i' 'i' 'w' 'r' 'n' 't' 'w' 'i' 'l'
+ 'b' 's' 'h' 'e' 'f' 'o' 'r' 'b' 'h' 'k' 'b' 'c' 'c' 'a']
+INFO:root:Write done at-9
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Generating string ['r' 'g' 'c' 'n' 's' 'i' 'o' 'p' 'q' 'q' 'r' 'h' 'x' 'o' 'q' 'x' 'u' 'g'
+ 'u' 'r' 's' 'o' 'p' 'q' 'p' 'e' 'h' 'i' 'q' 'z' 'n' 'c']
+INFO:root:Write done at-9
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Generating string ['f' 'p' 'c' 'q' 'j' 'j' 'y' 'w' 'o' 'j' 'd' 'i' 'z' 'b' 'k' 'g' 'o' 'r'
+ 'm' 'u' 'o' 'e' 'p' 'g' 'x' 'l' 'f' 'p' 'm' 'q' 'x' 'm']
+INFO:root:Write done at-9
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Generating string ['h' 't' 'm' 'a' 'm' 'h' 't' 'x' 'o' 'k' 'f' 'i' 'b' 'n' 'a' 'j' 'b' 'w'
+ 'a' 'i' 'l' 'a' 'k' 'd' 'j' 'u' 'g' 'a' 'v' 't' 's' 'd']
+INFO:root:Write done at-9
+INFO:root:START : Write to RAID 6
+INFO:root:Start
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Generating string ['v' 'o' 'y' 'q' 'i' 'v' 'u' 'p' 'a' 'p' 'v' 'n' 'i' 'z' 'w' 'r' 'g' 'c'
+ 'c' 't' 'd' 'h' 'g' 'n' 'f' 'm' 'x' 'w' 'a' 'l' 'l' 'l']
+INFO:root:Write done at-9
+INFO:root:START : Write to RAID 6
+INFO:root:Write done at0
+INFO:root:Write done at1
+INFO:root:Write done at2
+INFO:root:Write done at3
+INFO:root:Write done at4
+INFO:root:Write done at5
+INFO:root:Write done at6
+INFO:root:Write done at7
+INFO:root:Start
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Generating string ['m' 'h' 'j' 'p' 'e' 'z' 'j' 'h' 'h' 'h' 'd' 'm' 'f' 'q' 'o' 's' 'l' 'r'
+ 'i' 'p' 'p' 'e' 's' 'i' 'l' 'm' 'g' 'p' 'u' 'f' 'd' 'w']
+INFO:root:Write done at-9
+INFO:root:START : Write to RAID 6
+INFO:root:Write done at0
+INFO:root:Write done at1
+INFO:root:Write done at2
+INFO:root:Write done at3
+INFO:root:Write done at4
+INFO:root:Write done at5
+INFO:root:Write done at6
+INFO:root:Write done at7
