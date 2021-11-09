@@ -12,7 +12,7 @@ GF256 = galois.GF(2**8)
 
 class RAID(object):
 
-    def __init__(self, disk_list,num_normal_disk,parity_disk, q_disk, gf=None):
+    def __init__(self, disk_list,num_normal_disk,parity_disk, q_disk, stripe_size):
         super().__init__()
         '''
         disk_list is all the normal data list, indexed from 0 to num_of_normal_disk
@@ -21,6 +21,7 @@ class RAID(object):
         self.num_normal_disk = num_normal_disk
         self.parity_disk = parity_disk 
         self.q_disk = q_disk
+        self.stripe_size = stripe_size
         # if gf is None:
         #     self.gf = GF256(num_data_disk=self.num_normal_disk,
         #                           num_checksum=self.num_parity_disk)
@@ -54,8 +55,6 @@ class RAID(object):
             disk.write(id = disk.get_id() , data=''.join(self.check_empty_char(datum) for datum in data))
         
         # return P , Q
-
-
    
     #corrupted disks 
     def read_all_non_parity_disk(self, corrupted_disk_index=()):
@@ -70,6 +69,9 @@ class RAID(object):
 
         return removed_res
     
+    
+    
+    ###### Utilities
     def get_disk_ids(self):
         disk_ids = []
         for i in self.disk_list:
@@ -79,18 +81,64 @@ class RAID(object):
     def get_disk_list(self):
         return self.disk_list
     
-    def compute_Q(self, stripe_size):
+    
+    ##### For the creation of parity drives
+    def compute_Q(self, write = False):
         Q = GF256(0)
         for i in self.get_disk_list():
-            q = gf.drive_encoder(gf.convert_to_int(i.get_data_block(stripe_size)), i.get_id())
-            print(q)
+            q = gf.q_drive_encoder(gf.convert_to_int(i.get_data_block(self.stripe_size)), i.get_id())
             Q = Q + q
-        Q = gf.convert_to_chr(gf.convert_to_numpy(Q))
-        self.q_disk.write(Q)
-        return Q
+        Q = gf.convert_to_numpy(Q)
+        if write:
+            Q = gf.convert_to_chr(Q)
+            self.q_disk.write(Q)
+            return "Q has been computed and written to the Q drive"
+        else:
+            return Q
             
-            
-
+    def compute_P(self, write = False):
+        P = GF256(0)
+        for i in self.get_disk_list():
+            p = gf.drive_to_gf(gf.convert_to_int(i.get_data_block(self.stripe_size)))
+            P = P + p
+        P = gf.convert_to_numpy(P)
+        if write:
+            P = gf.convert_to_chr(P)
+            self.parity_disk.write(P)
+            return "P has been computed and written to the P drive"        
+        else:
+            return P
+    
+    
+    ##### Retrieve parity information
+    def get_Q(self):
+        return gf.convert_to_int(self.q_disk.get_data_block(self.stripe_size))
+    
+    def get_P(self):
+        return gf.convert_to_int(self.parity_disk.get_data_block(self.stripe_size))
+    
+    
+    ##### Check for drive failure
+    def check_for_failure(self):
+        P_test = self.compute_P()
+        Q_test = self.compute_Q()
+        P = self.get_P()
+        Q = self.get_Q()
+        
+        P_check = P_test == P
+        Q_check = Q_test == Q
+        
+        print(P_check)
+        print(Q_check)
+        
+        if P_check.all() and Q_check.all():
+            return "No failures"
+        else:
+            return "At least one failure"
+        
+    
+    
+    
     def compute_parity(self, data):
         """
         Compute the parity giving the data

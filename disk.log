@@ -1554,3 +1554,393 @@ INFO:root:Generating string ['p' 'f' 'x' 'b' 'v' 's' 'b' 'g' 'w' 'e' 'q' 'c' 'w'
  'a' 's' 'b' 'v' 'h' 't' 'n' 'a' 'q' 'p' 'f' 'o' 'y' 'i']
 INFO:root:Write done at9
 INFO:root:Write done at-2
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['b' 'g' 'u' 'j' 's' 'b' 'p' 'o' 'm' 'r' 't' 'k' 'l' 'j' 'g' 'x' 'y' 'v'
+ 'v' 'p' 'n' 'v' 'l' 'j' 'z' 't' 'j' 'l' 'y' 'x' 'y' 'z']
+INFO:root:Write done at0
+INFO:root:Generating string ['e' 'b' 'v' 'f' 'z' 'e' 's' 'z' 'k' 'd' 'y' 'y' 'w' 'n' 'e' 'q' 'o' 'x'
+ 'i' 'k' 'm' 'b' 'a' 'f' 'd' 't' 'n' 'u' 'j' 'q' 'k' 'q']
+INFO:root:Write done at1
+INFO:root:Generating string ['e' 'e' 's' 'e' 'b' 'a' 't' 'r' 's' 'h' 'v' 's' 'a' 'o' 'p' 'k' 'k' 'd'
+ 'o' 'e' 'f' 'h' 'h' 'x' 't' 'h' 'i' 'u' 's' 'v' 'd' 'i']
+INFO:root:Write done at2
+INFO:root:Generating string ['n' 'e' 'h' 'w' 'e' 'j' 'x' 'g' 'z' 'o' 'z' 'j' 'c' 'e' 'e' 'w' 'w' 'i'
+ 'e' 'p' 'c' 'n' 'u' 'i' 'b' 'w' 'g' 'a' 'k' 'n' 'z' 'v']
+INFO:root:Write done at3
+INFO:root:Generating string ['d' 'm' 'a' 'e' 'c' 's' 'k' 'f' 's' 'd' 'j' 'z' 'e' 'c' 's' 'h' 'y' 'l'
+ 'l' 'c' 'z' 's' 'y' 'i' 't' 't' 'j' 'i' 's' 's' 'j' 'p']
+INFO:root:Write done at4
+INFO:root:Generating string ['o' 't' 'u' 's' 'n' 'r' 'l' 'm' 'n' 'y' 'r' 'm' 'x' 'x' 'e' 'k' 'q' 'f'
+ 'p' 'b' 'w' 'x' 'i' 'c' 'g' 'k' 'g' 'l' 'd' 'r' 'p' 'u']
+INFO:root:Write done at5
+INFO:root:Generating string ['n' 't' 'u' 'g' 'h' 'e' 'h' 'c' 't' 'i' 's' 'm' 'g' 'k' 'c' 'q' 'l' 't'
+ 'b' 'c' 'b' 'x' 'l' 'c' 'a' 'j' 'l' 'd' 'c' 'n' 'w' 's']
+INFO:root:Write done at6
+INFO:root:Generating string ['x' 'e' 't' 'k' 'c' 'f' 'p' 'z' 's' 'f' 'v' 'z' 'n' 'm' 'o' 's' 'i' 'z'
+ 'q' 'o' 'v' 'a' 'l' 'a' 'k' 'p' 'b' 'b' 'o' 'j' 'u' 't']
+INFO:root:Write done at7
+INFO:root:Generating string ['v' 'y' 'g' 'f' 'l' 'j' 'z' 'x' 's' 'z' 's' 'e' 'u' 'x' 't' 'l' 'x' 'j'
+ 'j' 'e' 'i' 'i' 'm' 'u' 'h' 'v' 's' 'n' 'f' 'k' 'p' 's']
+INFO:root:Write done at8
+INFO:root:Generating string ['w' 'x' 's' 't' 'q' 's' 'e' 'w' 'x' 'c' 'r' 'g' 'w' 'g' 'k' 'e' 'a' 'g'
+ 's' 's' 'u' 'o' 'q' 's' 'e' 'z' 'o' 'q' 'm' 'k' 'e' 't']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['h' 'x' 'v' 'd' 'e' 'l' 'r' 'a' 'y' 'j' 'p' 'l' 'z' 'b' 'r' 'l' 'a' 'x'
+ 'z' 'z' 'n' 'r' 'j' 'e' 'y' 'i' 'v' 'm' 'h' 'v' 'g' 'f']
+INFO:root:Write done at0
+INFO:root:Generating string ['h' 'l' 'z' 'v' 'p' 'j' 'j' 'u' 'h' 'w' 'u' 'n' 'p' 'e' 'y' 'r' 't' 'c'
+ 'a' 'm' 't' 'x' 's' 'i' 'i' 'y' 'c' 'z' 'e' 'l' 'w' 'q']
+INFO:root:Write done at1
+INFO:root:Generating string ['i' 'v' 'y' 'm' 'e' 'k' 'b' 'k' 'r' 'j' 'z' 'w' 'd' 'a' 'z' 'i' 'k' 'g'
+ 'h' 'p' 'e' 'a' 'd' 'i' 'l' 'r' 'e' 't' 'c' 'k' 's' 'p']
+INFO:root:Write done at2
+INFO:root:Generating string ['t' 's' 'v' 'd' 'l' 'r' 'f' 's' 'u' 'e' 'o' 'd' 'x' 't' 'y' 'z' 'q' 'x'
+ 'a' 'd' 's' 'i' 'e' 's' 'h' 'h' 'i' 'e' 'm' 'y' 'm' 'm']
+INFO:root:Write done at3
+INFO:root:Generating string ['h' 'w' 'v' 'n' 'b' 's' 'v' 'k' 'y' 'g' 'o' 'k' 'c' 'a' 'k' 'c' 'o' 'v'
+ 'q' 'f' 'v' 'o' 'g' 'g' 'w' 'k' 'h' 'd' 'x' 'r' 'l' 'f']
+INFO:root:Write done at4
+INFO:root:Generating string ['n' 'i' 'u' 'j' 'e' 'y' 'c' 'i' 'l' 'b' 'b' 'r' 'o' 'n' 'n' 'i' 'f' 'k'
+ 'l' 'w' 'u' 'k' 'n' 'h' 'd' 'o' 'n' 'b' 'o' 'q' 's' 'm']
+INFO:root:Write done at5
+INFO:root:Generating string ['q' 'v' 'i' 'f' 'c' 'e' 'j' 'j' 'm' 'v' 'e' 'w' 'm' 'o' 'o' 'r' 'y' 'd'
+ 'b' 'b' 'v' 'w' 'y' 'u' 'z' 'w' 'y' 'p' 'f' 'w' 'v' 'd']
+INFO:root:Write done at6
+INFO:root:Generating string ['h' 'x' 'a' 'u' 'h' 'v' 'p' 'o' 'r' 'j' 'v' 'y' 'r' 'l' 'c' 'x' 'e' 'r'
+ 'g' 'v' 'w' 'b' 'i' 'b' 'd' 'x' 'z' 'i' 't' 'j' 'j' 's']
+INFO:root:Write done at7
+INFO:root:Generating string ['n' 'e' 'k' 'n' 'z' 'z' 's' 'x' 'x' 'w' 'o' 'd' 'w' 'r' 'g' 'x' 'n' 'p'
+ 'r' 'p' 'i' 'u' 'z' 'l' 'a' 't' 'f' 'p' 'q' 'q' 'u' 'm']
+INFO:root:Write done at8
+INFO:root:Generating string ['l' 'j' 't' 'j' 'y' 'e' 'e' 't' 'f' 'i' 'r' 'h' 'r' 'j' 't' 'l' 'm' 'b'
+ 'y' 'l' 'w' 'm' 'o' 'h' 'h' 'm' 't' 'y' 'n' 'i' 'r' 'q']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['w' 'j' 'i' 'y' 'z' 'j' 'd' 's' 'x' 'h' 'h' 'w' 'v' 'h' 'u' 'u' 'm' 's'
+ 'z' 'u' 'u' 'e' 'i' 'w' 'm' 'a' 'p' 'm' 'u' 'u' 'q' 'g']
+INFO:root:Write done at0
+INFO:root:Generating string ['q' 's' 'o' 'r' 'z' 'i' 'e' 's' 'c' 'l' 's' 'q' 'x' 'k' 'h' 'f' 'h' 'i'
+ 'm' 'k' 'l' 'e' 'z' 'r' 's' 'h' 'v' 'v' 'c' 'o' 'v' 'f']
+INFO:root:Write done at1
+INFO:root:Generating string ['z' 'k' 'x' 'c' 'y' 'z' 'm' 'q' 'b' 'z' 'y' 'd' 'f' 'i' 'i' 'a' 'y' 'n'
+ 'q' 's' 'd' 'y' 'f' 'r' 'k' 'j' 'r' 'j' 'w' 'f' 'h' 'p']
+INFO:root:Write done at2
+INFO:root:Generating string ['n' 'q' 'b' 'z' 'w' 'u' 't' 'd' 't' 'v' 'l' 'u' 'z' 'c' 'y' 't' 'x' 'b'
+ 'x' 'j' 'x' 'o' 'z' 'w' 'c' 'o' 'u' 'h' 'l' 'o' 'c' 'o']
+INFO:root:Write done at3
+INFO:root:Generating string ['s' 'c' 'x' 'e' 'u' 'i' 's' 'v' 'x' 'x' 'p' 'a' 'i' 'i' 't' 'c' 'm' 'z'
+ 'w' 's' 'o' 'f' 'f' 'w' 'r' 'e' 'n' 'b' 'k' 'g' 'j' 'e']
+INFO:root:Write done at4
+INFO:root:Generating string ['o' 'n' 'k' 'x' 'm' 'y' 'w' 'p' 'g' 'e' 'u' 'm' 'o' 'r' 'j' 'a' 'k' 'd'
+ 'k' 'a' 'g' 'z' 't' 'z' 'b' 'e' 'i' 'p' 'x' 'k' 'j' 'a']
+INFO:root:Write done at5
+INFO:root:Generating string ['g' 'v' 'b' 'a' 'u' 'g' 'd' 'c' 'h' 'j' 'g' 'g' 'g' 'a' 'n' 'x' 'e' 'q'
+ 's' 'y' 'l' 'w' 'z' 'u' 'f' 'u' 'b' 'h' 'g' 'l' 'h' 'y']
+INFO:root:Write done at6
+INFO:root:Generating string ['d' 'r' 'z' 'u' 'k' 'f' 'a' 't' 'k' 'm' 'i' 'r' 'b' 'g' 'o' 't' 't' 'c'
+ 'j' 's' 'q' 'c' 'a' 'i' 'g' 'u' 'u' 'f' 'i' 'q' 'v' 'p']
+INFO:root:Write done at7
+INFO:root:Generating string ['k' 'r' 'a' 'z' 'g' 'i' 'o' 'i' 'r' 'x' 'c' 'c' 'r' 'e' 'i' 'w' 'f' 'e'
+ 'n' 'b' 'w' 'q' 'c' 'x' 'o' 'p' 'd' 'k' 'z' 'm' 'k' 'w']
+INFO:root:Write done at8
+INFO:root:Generating string ['u' 'h' 'x' 'j' 'j' 'h' 'g' 'c' 'f' 'n' 'b' 'i' 'b' 'c' 'z' 'a' 'm' 'r'
+ 'q' 'd' 's' 's' 's' 'z' 'm' 'q' 's' 'd' 'i' 'h' 'h' 'l']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['u' 'h' 'r' 'p' 'z' 'r' 'l' 'r' 'd' 'n' 'x' 't' 'l' 'k' 'x' 'a' 'f' 'x'
+ 'y' 'v' 'f' 'y' 'p' 'l' 'a' 'u' 's' 's' 'y' 'w' 'w' 'z']
+INFO:root:Write done at0
+INFO:root:Generating string ['y' 'x' 'n' 's' 'l' 's' 'w' 's' 'z' 'm' 'v' 'd' 'l' 'd' 'g' 'k' 'p' 'i'
+ 'b' 'i' 'v' 'z' 'i' 'b' 'o' 'r' 'y' 'd' 'f' 'e' 'w' 'p']
+INFO:root:Write done at1
+INFO:root:Generating string ['c' 'u' 's' 'd' 'h' 'a' 'e' 'h' 'p' 'x' 'd' 'v' 'h' 't' 't' 'j' 'u' 't'
+ 't' 'x' 'g' 'f' 'y' 'i' 'j' 'j' 'h' 'c' 'u' 'y' 'w' 'c']
+INFO:root:Write done at2
+INFO:root:Generating string ['y' 'k' 'j' 'r' 'j' 's' 'k' 'o' 'd' 'f' 'e' 'u' 'u' 'b' 'm' 'l' 'q' 'j'
+ 'k' 'w' 'v' 'd' 'u' 'w' 'p' 'z' 'e' 'y' 'c' 'j' 'r' 'p']
+INFO:root:Write done at3
+INFO:root:Generating string ['z' 'a' 'f' 'i' 'p' 'a' 'i' 'i' 'e' 'd' 'c' 'l' 'm' 's' 'f' 'k' 'y' 'l'
+ 'm' 't' 'l' 'a' 'x' 'v' 's' 'b' 'r' 'w' 'j' 'p' 'd' 'd']
+INFO:root:Write done at4
+INFO:root:Generating string ['v' 'm' 'a' 'b' 'x' 'i' 'm' 'h' 'f' 'h' 'r' 'g' 'x' 'u' 'e' 'k' 'g' 'r'
+ 'l' 'o' 'k' 'e' 'r' 'b' 'd' 'i' 'h' 'p' 'q' 'a' 't' 'h']
+INFO:root:Write done at5
+INFO:root:Generating string ['i' 'f' 'f' 'a' 'f' 'l' 'k' 'b' 'n' 'b' 'y' 'j' 'r' 'w' 't' 'i' 'r' 'f'
+ 'r' 'p' 'n' 'c' 'z' 'z' 'z' 'z' 'j' 't' 'l' 't' 'b' 'b']
+INFO:root:Write done at6
+INFO:root:Generating string ['p' 'p' 't' 'z' 'e' 'm' 'y' 'a' 'g' 'n' 'w' 'a' 'i' 'a' 's' 'g' 'h' 'f'
+ 'w' 't' 'v' 'a' 'y' 'd' 'a' 's' 'j' 'a' 'p' 'z' 'e' 's']
+INFO:root:Write done at7
+INFO:root:Generating string ['z' 'd' 'y' 'm' 'i' 'd' 'f' 'f' 'c' 't' 'g' 'g' 'j' 'h' 'j' 'y' 'z' 'd'
+ 'y' 'f' 'p' 't' 'j' 'w' 'm' 's' 'c' 'b' 'm' 's' 'j' 'k']
+INFO:root:Write done at8
+INFO:root:Generating string ['y' 'g' 'j' 't' 'b' 'p' 'c' 'f' 's' 'q' 'y' 'w' 'c' 'x' 'z' 'k' 's' 'c'
+ 'c' 'e' 'j' 'd' 'v' 'g' 'd' 'e' 't' 'n' 'l' 'f' 's' 's']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['o' 'j' 'w' 's' 'c' 'a' 'g' 'p' 'a' 't' 'x' 't' 'w' 's' 'd' 'n' 'q' 'v'
+ 'q' 'y' 'r' 'x' 'l' 'n' 'j' 'l' 't' 'n' 'k' 't' 'b' 'v']
+INFO:root:Write done at0
+INFO:root:Generating string ['p' 'o' 'z' 'f' 'c' 'g' 'k' 'l' 'e' 'n' 'e' 's' 'o' 'q' 't' 'i' 'h' 'o'
+ 'g' 'n' 'l' 'h' 'g' 'l' 't' 'f' 'u' 's' 'q' 'k' 'h' 'n']
+INFO:root:Write done at1
+INFO:root:Generating string ['e' 'v' 'y' 'q' 'f' 'n' 'w' 'v' 'q' 's' 'z' 'd' 'i' 't' 'x' 'y' 'l' 'c'
+ 't' 'c' 'y' 'x' 'g' 'j' 'g' 'd' 'q' 'n' 'k' 'p' 'x' 'b']
+INFO:root:Write done at2
+INFO:root:Generating string ['k' 'a' 's' 'r' 'i' 'p' 'd' 'c' 'w' 'y' 'y' 'q' 'z' 'e' 'y' 'm' 'x' 'i'
+ 't' 'e' 'k' 'x' 'e' 'k' 'v' 'f' 'k' 't' 'o' 'v' 'p' 'k']
+INFO:root:Write done at3
+INFO:root:Generating string ['t' 'n' 'a' 'v' 'b' 'u' 'e' 'x' 's' 'z' 'd' 'c' 'g' 'v' 'a' 'b' 'n' 'x'
+ 'g' 'v' 'l' 's' 's' 'c' 'u' 'b' 'g' 'p' 'l' 'a' 'x' 'g']
+INFO:root:Write done at4
+INFO:root:Generating string ['m' 'n' 'b' 'a' 'n' 'r' 'a' 'a' 'p' 'k' 'w' 'n' 'c' 'm' 'd' 'j' 'f' 'c'
+ 'm' 'l' 'q' 'b' 'u' 'n' 't' 't' 'p' 'g' 'o' 'j' 'p' 'a']
+INFO:root:Write done at5
+INFO:root:Generating string ['v' 'k' 'y' 'f' 'g' 'l' 't' 'a' 'h' 'h' 't' 't' 'i' 'y' 'e' 'g' 't' 'n'
+ 'j' 'h' 'y' 'i' 'z' 'r' 'q' 'e' 'q' 'x' 'i' 'k' 'u' 'z']
+INFO:root:Write done at6
+INFO:root:Generating string ['u' 'm' 'r' 'e' 't' 'j' 'p' 'l' 'f' 'r' 'm' 'w' 'h' 'i' 'u' 'z' 'p' 'u'
+ 'u' 'e' 'v' 'v' 'f' 'm' 't' 'n' 'q' 'k' 'j' 'e' 'w' 'v']
+INFO:root:Write done at7
+INFO:root:Generating string ['b' 'r' 'a' 'w' 'z' 'n' 'd' 'r' 'd' 'd' 'g' 'p' 't' 'k' 'p' 'b' 'v' 'd'
+ 'y' 'c' 'j' 'h' 'u' 'd' 'e' 'x' 'p' 't' 'q' 'd' 'k' 'z']
+INFO:root:Write done at8
+INFO:root:Generating string ['j' 'l' 'e' 'n' 'm' 't' 'c' 'c' 'm' 'a' 'a' 'n' 'x' 'm' 'r' 'j' 'v' 'q'
+ 'x' 'n' 'd' 'q' 'h' 'h' 'n' 'd' 'h' 'd' 'y' 'e' 'y' 'u']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Write done at-1
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['k' 'm' 'r' 'k' 'g' 'f' 't' 't' 't' 'k' 'q' 'c' 't' 'k' 'r' 's' 'j' 'f'
+ 'g' 'i' 'e' 'e' 'r' 's' 'y' 'q' 'p' 'x' 'b' 'g' 'l' 'u']
+INFO:root:Write done at0
+INFO:root:Generating string ['b' 'm' 'w' 'n' 'h' 'k' 'n' 'i' 'y' 'o' 'v' 'l' 'a' 'z' 'z' 'a' 'o' 'q'
+ 'a' 'x' 'z' 'v' 'h' 'w' 'b' 'j' 'g' 'a' 'x' 'h' 'x' 'y']
+INFO:root:Write done at1
+INFO:root:Generating string ['t' 'h' 'z' 'e' 'p' 'g' 'a' 'f' 'g' 'f' 'a' 'h' 'v' 'g' 'x' 'w' 'w' 's'
+ 'd' 'u' 'w' 'q' 'b' 'f' 'f' 'o' 'f' 'n' 'y' 'c' 'z' 'm']
+INFO:root:Write done at2
+INFO:root:Generating string ['m' 'w' 'c' 'j' 'j' 'u' 'c' 'e' 'a' 'z' 'n' 'f' 'd' 't' 't' 'i' 'x' 'b'
+ 'x' 's' 'f' 'j' 'p' 'a' 'b' 'c' 'o' 's' 'c' 'm' 'g' 'v']
+INFO:root:Write done at3
+INFO:root:Generating string ['w' 'm' 'i' 'e' 'o' 'i' 'p' 'o' 'd' 'w' 'a' 'p' 'd' 'f' 'x' 'j' 'n' 't'
+ 'x' 't' 'z' 'w' 't' 'i' 'f' 'h' 'q' 'c' 'p' 'v' 'w' 'b']
+INFO:root:Write done at4
+INFO:root:Generating string ['d' 't' 'k' 'q' 'p' 'u' 'e' 'b' 'e' 'p' 'i' 'k' 'e' 'a' 'z' 'a' 'y' 'o'
+ 'c' 'g' 'h' 'r' 'u' 'l' 'w' 'f' 'a' 'a' 'b' 's' 'q' 'r']
+INFO:root:Write done at5
+INFO:root:Generating string ['c' 'o' 'z' 'a' 's' 'k' 'g' 'c' 'l' 'h' 'z' 'k' 'i' 'v' 't' 'o' 'o' 'y'
+ 'x' 'o' 'u' 'y' 'd' 'z' 'h' 'u' 'b' 'b' 's' 'n' 'g' 's']
+INFO:root:Write done at6
+INFO:root:Generating string ['c' 'r' 'x' 'p' 'c' 'r' 'b' 'w' 'v' 'q' 't' 't' 'q' 't' 'h' 'f' 'u' 'c'
+ 't' 'i' 'c' 'd' 'h' 'i' 'p' 'b' 'a' 'v' 'o' 'u' 'b' 'p']
+INFO:root:Write done at7
+INFO:root:Generating string ['h' 'x' 'j' 'z' 'c' 'a' 'a' 'm' 'x' 'w' 'u' 'e' 'j' 'p' 'k' 'h' 'u' 't'
+ 'l' 'v' 'm' 'a' 'i' 'b' 'n' 'd' 'd' 'r' 'd' 'e' 'z' 'l']
+INFO:root:Write done at8
+INFO:root:Generating string ['h' 't' 'z' 'h' 'y' 'o' 'b' 'y' 'i' 'w' 'b' 'v' 'x' 'a' 'v' 'o' 'h' 'd'
+ 'h' 'z' 'd' 'c' 's' 'r' 'w' 'b' 'w' 'i' 'l' 'w' 'd' 'h']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Write done at-1
+INFO:root:Generating string ['s' 'i' 'p' 's' 'e' 'a' 'c' 'u' 'f' 'o' 'v' 'g' 'j' 'b' 'g' 'm' 'k' 'd'
+ 'w' 'i' 'l' 't' 'r' 'x' 'z' 'c' 'o' 'y' 'z' 't' 'n' 't']
+INFO:root:Write done at-9
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['j' 'h' 'x' 'w' 'f' 'v' 'i' 'a' 'k' 'g' 'w' 'd' 'c' 'n' 'g' 'i' 'm' 'b'
+ 'w' 'f' 't' 'q' 'o' 'p' 'y' 'v' 'u' 's' 'd' 'j' 'a' 'w']
+INFO:root:Write done at0
+INFO:root:Generating string ['g' 'v' 'j' 'w' 'z' 'f' 'e' 't' 'a' 'c' 'x' 'o' 'g' 'l' 'q' 'v' 'c' 'o'
+ 'u' 'h' 'h' 'i' 'h' 'q' 'b' 'l' 'm' 'g' 'w' 'f' 'h' 't']
+INFO:root:Write done at1
+INFO:root:Generating string ['q' 't' 'd' 'a' 'q' 'f' 'v' 'a' 'm' 't' 'p' 'q' 'g' 'k' 'z' 'l' 'h' 'a'
+ 'g' 'b' 'x' 'g' 'h' 'p' 'y' 'y' 'k' 'h' 'i' 'u' 'u' 'd']
+INFO:root:Write done at2
+INFO:root:Generating string ['t' 'x' 'k' 'v' 'z' 'g' 'e' 'z' 'y' 'o' 'u' 'o' 'j' 'k' 'z' 'h' 'r' 'g'
+ 'c' 's' 'l' 'p' 'i' 'k' 'y' 'f' 'r' 'w' 'x' 'y' 'l' 'p']
+INFO:root:Write done at3
+INFO:root:Generating string ['k' 'e' 'e' 'p' 'g' 'i' 'e' 'e' 'c' 'i' 'y' 'j' 'n' 'l' 'm' 'o' 'm' 'd'
+ 'w' 'z' 'z' 'd' 'l' 'v' 'u' 'k' 'm' 'i' 'g' 'b' 'v' 'v']
+INFO:root:Write done at4
+INFO:root:Generating string ['f' 'k' 'w' 'y' 'z' 's' 'u' 'j' 'u' 't' 'c' 'u' 'a' 'a' 'u' 'l' 'r' 'h'
+ 'q' 'm' 'x' 'o' 'w' 'v' 'p' 'v' 'h' 'e' 'h' 'z' 'c' 'o']
+INFO:root:Write done at5
+INFO:root:Generating string ['q' 'h' 'd' 'n' 'x' 'x' 'f' 'b' 'a' 'h' 'i' 'k' 'r' 'x' 's' 's' 'z' 'j'
+ 'o' 'a' 'g' 'c' 'm' 'h' 'q' 'y' 'm' 'w' 'g' 't' 'o' 'h']
+INFO:root:Write done at6
+INFO:root:Generating string ['g' 'h' 'b' 'd' 'l' 'q' 'p' 'j' 'j' 'm' 'l' 'y' 'y' 'd' 'h' 'j' 'g' 'e'
+ 'q' 'f' 'c' 'x' 'y' 'x' 'y' 'x' 'g' 'm' 'v' 'z' 'm' 'x']
+INFO:root:Write done at7
+INFO:root:Generating string ['i' 's' 'z' 'k' 'i' 'e' 'x' 'w' 'j' 'o' 'w' 'k' 'o' 't' 'j' 'a' 'z' 'c'
+ 'e' 'l' 'j' 'c' 'z' 'r' 'h' 'p' 'l' 'u' 'r' 'b' 'p' 'w']
+INFO:root:Write done at8
+INFO:root:Generating string ['z' 'm' 'e' 'm' 'r' 'y' 'n' 's' 'a' 'h' 'm' 'n' 'j' 't' 'q' 'x' 'w' 'k'
+ 'x' 'g' 'r' 'q' 'k' 'a' 'f' 'w' 'w' 'r' 'n' 'x' 'f' 'a']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Write done at-1
+INFO:root:Generating string ['n' 'u' 'p' 's' 'f' 'j' 'm' 'k' 'y' 'h' 'm' 'f' 'u' 'd' 'e' 'g' 'a' 'p'
+ 'g' 'k' 'z' 'a' 'w' 'l' 'j' 'j' 't' 't' 'c' 'j' 'n' 's']
+INFO:root:Write done at0
+INFO:root:Generating string ['r' 's' 'y' 'r' 'n' 'd' 'e' 'y' 't' 'j' 't' 'g' 'd' 'w' 't' 'x' 'v' 'q'
+ 'h' 'q' 'm' 'c' 'g' 'y' 'b' 'f' 'y' 'y' 'c' 'c' 'w' 'z']
+INFO:root:Write done at1
+INFO:root:Generating string ['t' 'a' 'n' 't' 'i' 'h' 'a' 'y' 'x' 'i' 'o' 'h' 'e' 'h' 'd' 'v' 'd' 's'
+ 'j' 'e' 'w' 'x' 'd' 'h' 'b' 'w' 'l' 't' 'v' 'i' 'h' 'n']
+INFO:root:Write done at2
+INFO:root:Generating string ['w' 'k' 'd' 'u' 'h' 'z' 'v' 's' 'f' 'o' 'h' 'o' 'z' 'l' 'b' 'z' 'g' 'f'
+ 'd' 'o' 'h' 's' 's' 'u' 'j' 'k' 'j' 'l' 'x' 'x' 'p' 's']
+INFO:root:Write done at3
+INFO:root:Generating string ['l' 'h' 'h' 'z' 'n' 'a' 'n' 'l' 'y' 'a' 'b' 'o' 'w' 'g' 'j' 'y' 'e' 'c'
+ 'z' 'a' 'c' 'q' 't' 'n' 'n' 'm' 'p' 'k' 'e' 'd' 'p' 'n']
+INFO:root:Write done at4
+INFO:root:Generating string ['y' 'h' 'l' 'f' 'h' 's' 'j' 'x' 'h' 'q' 'z' 'l' 'u' 'w' 's' 'o' 'h' 'a'
+ 's' 'w' 'i' 'j' 'c' 'e' 'u' 'z' 'h' 'u' 't' 'q' 'r' 'u']
+INFO:root:Write done at5
+INFO:root:Generating string ['o' 'j' 'i' 'b' 'f' 'g' 'o' 'h' 't' 'v' 'z' 'u' 'r' 'l' 'd' 'x' 'm' 's'
+ 'r' 'j' 'z' 'v' 'r' 'w' 'z' 'z' 'e' 'l' 'g' 'c' 'z' 'g']
+INFO:root:Write done at6
+INFO:root:Generating string ['y' 'p' 'v' 'x' 'y' 'q' 'r' 'u' 'w' 'w' 'w' 'y' 't' 'x' 's' 'z' 's' 'b'
+ 'y' 'q' 'a' 'r' 'r' 'b' 'b' 'x' 's' 'b' 'h' 'v' 'f' 'z']
+INFO:root:Write done at7
+INFO:root:Generating string ['o' 'x' 'o' 'q' 'z' 'p' 'a' 'o' 'n' 'x' 'f' 'u' 'd' 'z' 'a' 'z' 't' 'u'
+ 's' 'o' 'x' 'u' 'j' 'u' 'c' 'i' 'f' 'x' 'a' 'n' 'a' 'q']
+INFO:root:Write done at8
+INFO:root:Generating string ['w' 'v' 'q' 'x' 'd' 's' 's' 'y' 'o' 'h' 'p' 'n' 'g' 'h' 'a' 'w' 'y' 'q'
+ 'p' 'y' 'v' 'b' 'f' 'b' 'm' 'w' 'z' 'r' 'e' 'q' 'a' 'h']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Write done at-1
+INFO:root:Generating string ['i' 'a' 'g' 'h' 'y' 'p' 'e' 'n' 'u' 'n' 'i' 'h' 'u' 'b' 'u' 'g' 'p' 'g'
+ 't' 'c' 'c' 'a' 'y' 'f' 'd' 'k' 'j' 'm' 'g' 'y' 'a' 'b']
+INFO:root:Write done at-9
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['r' 'n' 'g' 'u' 'v' 'd' 'y' 'd' 'b' 'w' 'z' 's' 'n' 'h' 'r' 'l' 'y' 't'
+ 'u' 'm' 'v' 'f' 'f' 'c' 's' 'p' 'x' 'j' 'j' 'v' 'c' 's']
+INFO:root:Write done at0
+INFO:root:Generating string ['k' 't' 'y' 'w' 'd' 's' 'q' 'j' 'u' 'v' 'w' 'k' 'u' 'h' 'b' 'p' 'x' 'g'
+ 'p' 'b' 'x' 'y' 'o' 't' 'g' 'p' 'r' 's' 'j' 'g' 'x' 'k']
+INFO:root:Write done at1
+INFO:root:Generating string ['g' 'g' 'k' 's' 'm' 'e' 'f' 'e' 'p' 't' 'w' 'p' 'i' 't' 'n' 'j' 'n' 'j'
+ 'a' 'h' 'g' 'h' 'p' 'm' 'c' 'u' 'y' 'g' 'k' 'z' 'j' 'g']
+INFO:root:Write done at2
+INFO:root:Generating string ['h' 's' 'w' 'i' 'o' 'w' 'b' 'q' 'j' 'h' 't' 'g' 'r' 't' 'm' 'j' 'k' 'o'
+ 'o' 'd' 'd' 'h' 'k' 's' 'j' 'f' 'e' 'z' 'd' 'h' 'h' 'm']
+INFO:root:Write done at3
+INFO:root:Generating string ['f' 'b' 'g' 'z' 'f' 't' 'w' 's' 'f' 'u' 'n' 'i' 'q' 'k' 'b' 'p' 't' 'e'
+ 'y' 's' 'u' 'x' 'a' 't' 'g' 'y' 'z' 'g' 'j' 'o' 'a' 'k']
+INFO:root:Write done at4
+INFO:root:Generating string ['z' 'd' 'y' 'e' 'm' 'p' 'c' 'y' 'g' 'i' 'b' 'e' 'v' 'b' 'h' 'x' 'b' 'f'
+ 'o' 'c' 'r' 'k' 'r' 'i' 'd' 'm' 'q' 'c' 'p' 'g' 'o' 'i']
+INFO:root:Write done at5
+INFO:root:Generating string ['h' 't' 'k' 'u' 'i' 'b' 'y' 'j' 'c' 'o' 'o' 'z' 'j' 'u' 'b' 'm' 'v' 'k'
+ 'i' 'r' 'g' 't' 'm' 'v' 'w' 'h' 'n' 'u' 'p' 'u' 'p' 'v']
+INFO:root:Write done at6
+INFO:root:Generating string ['r' 'v' 'b' 'k' 'u' 's' 'u' 'i' 'o' 'v' 'j' 'p' 'p' 's' 'q' 'w' 'f' 'j'
+ 'j' 'g' 'u' 'n' 'b' 'f' 't' 'g' 'x' 'k' 'p' 'n' 'm' 's']
+INFO:root:Write done at7
+INFO:root:Generating string ['m' 'h' 'w' 'q' 'e' 'n' 'a' 'b' 'z' 'n' 'n' 'y' 'e' 'u' 'k' 's' 'n' 'm'
+ 'a' 'i' 'm' 'p' 'y' 'i' 'i' 'y' 'w' 'y' 'q' 'q' 'o' 'd']
+INFO:root:Write done at8
+INFO:root:Generating string ['j' 'q' 'b' 'm' 'n' 'h' 'g' 'n' 's' 'o' 'r' 'g' 'z' 'm' 'b' 'f' 'f' 'g'
+ 'q' 'p' 'x' 't' 's' 'g' 'd' 'v' 'r' 'r' 'b' 'w' 'a' 'y']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Write done at-1
+INFO:root:Generating string ['x' 'j' 'z' 'g' 'v' 'd' 'y' 'l' 'c' 'g' 'q' 'v' 'h' 'o' 'e' 'b' 'w' 'a'
+ 'h' 'r' 'n' 'd' 't' 'm' 'f' 'n' 's' 'j' 'b' 'e' 'm' 'l']
+INFO:root:Write done at-9
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['y' 'n' 'c' 'g' 'o' 't' 'd' 'd' 'b' 'h' 'p' 'g' 'f' 'z' 's' 'e' 's' 'k'
+ 'o' 's' 'b' 'c' 'a' 'o' 'p' 'v' 'q' 'h' 'n' 'p' 'a' 'a']
+INFO:root:Write done at0
+INFO:root:Generating string ['k' 'c' 's' 'p' 'j' 'w' 'r' 't' 'j' 'd' 'l' 'f' 'e' 'f' 'o' 'y' 'n' 't'
+ 'y' 'a' 'y' 'm' 'u' 'c' 'h' 'x' 'r' 'e' 'g' 'n' 'g' 'y']
+INFO:root:Write done at1
+INFO:root:Generating string ['e' 'w' 'n' 's' 'n' 'h' 'l' 's' 's' 'n' 'i' 'i' 'z' 'l' 'q' 'q' 'k' 'x'
+ 't' 'w' 'v' 'r' 'o' 't' 'o' 'l' 'e' 'h' 'y' 'h' 'v' 'm']
+INFO:root:Write done at2
+INFO:root:Generating string ['b' 'f' 'k' 'k' 'n' 'z' 'c' 'd' 'k' 't' 'x' 'l' 'v' 'c' 'z' 'g' 'd' 'm'
+ 's' 'g' 'o' 'i' 'a' 'q' 'u' 'u' 'r' 'l' 'r' 'z' 'v' 'k']
+INFO:root:Write done at3
+INFO:root:Generating string ['m' 'w' 'z' 'k' 'n' 'k' 'c' 'e' 'i' 'e' 'g' 'w' 'w' 'x' 'u' 'h' 'r' 'o'
+ 'r' 'q' 'c' 'p' 'o' 'l' 'z' 'x' 'o' 'd' 'd' 'h' 'f' 's']
+INFO:root:Write done at4
+INFO:root:Generating string ['k' 'l' 'k' 'w' 'y' 'i' 'q' 's' 'n' 'g' 'e' 's' 't' 'k' 'm' 'w' 't' 'n'
+ 'g' 'f' 'l' 'f' 'i' 'e' 'g' 'l' 'd' 'v' 'y' 's' 'r' 'i']
+INFO:root:Write done at5
+INFO:root:Generating string ['l' 'm' 'n' 'q' 'm' 'k' 'u' 'g' 'k' 'g' 'i' 'b' 'j' 'z' 'y' 'f' 'c' 'y'
+ 'b' 'r' 'p' 'y' 'v' 'f' 'o' 't' 's' 'k' 'd' 'c' 'r' 'g']
+INFO:root:Write done at6
+INFO:root:Generating string ['f' 'x' 'l' 't' 'u' 'g' 'k' 'x' 'y' 'r' 'd' 'f' 'g' 'o' 'y' 'r' 'r' 'f'
+ 'q' 'j' 'l' 'y' 'm' 'v' 'x' 'u' 'x' 'h' 'f' 'h' 'u' 'p']
+INFO:root:Write done at7
+INFO:root:Generating string ['y' 'k' 'a' 'y' 'e' 'u' 's' 'p' 'l' 'k' 'l' 's' 'v' 'p' 'p' 'd' 'd' 't'
+ 'm' 't' 'h' 'y' 't' 'j' 'j' 'm' 'b' 'k' 'f' 'h' 'n' 'w']
+INFO:root:Write done at8
+INFO:root:Generating string ['k' 'v' 'l' 's' 'z' 'z' 'm' 't' 'd' 'u' 'k' 'i' 'x' 'q' 'c' 'x' 'm' 'a'
+ 'x' 'p' 'o' 'c' 'j' 'q' 't' 'h' 'o' 'w' 'g' 'o' 't' 'l']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Write done at-1
+INFO:root:Generating string ['g' 'a' 'v' 'e' 'k' 'r' 'u' 'w' 'm' 'x' 'z' 'r' 'u' 'x' 'c' 'v' 'x' 'y'
+ 'c' 'n' 't' 'q' 'f' 'a' 'p' 'm' 'c' 'l' 'i' 'r' 'n' 'h']
+INFO:root:Write done at-9
+INFO:root:Start
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+INFO:root:Generating string ['g' 'i' 'y' 'd' 'z' 'x' 'f' 'w' 'o' 'y' 'b' 'e' 'r' 'r' 't' 'h' 'y' 'u'
+ 'q' 'o' 's' 'a' 'p' 'j' 't' 'w' 'r' 'j' 'u' 'g' 'c' 'a']
+INFO:root:Write done at0
+INFO:root:Generating string ['y' 'd' 'h' 'r' 'c' 'b' 'r' 'o' 'b' 'x' 'f' 'w' 'p' 'r' 'l' 'e' 'a' 'u'
+ 'e' 'o' 's' 'o' 'l' 'l' 't' 'r' 'f' 'f' 'r' 'd' 'g' 'z']
+INFO:root:Write done at1
+INFO:root:Generating string ['n' 's' 'm' 'w' 'e' 'z' 'b' 'o' 'm' 'n' 'f' 'a' 'n' 'e' 'd' 'u' 's' 'j'
+ 'x' 'p' 'f' 't' 'c' 'm' 'z' 'f' 'r' 't' 'w' 'z' 't' 'i']
+INFO:root:Write done at2
+INFO:root:Generating string ['j' 'e' 'd' 'x' 'b' 'h' 's' 'l' 'o' 'h' 'n' 'v' 'l' 'o' 'r' 'x' 'd' 'z'
+ 'a' 'a' 'g' 'k' 'y' 'o' 'l' 'g' 'e' 'd' 's' 'f' 'x' 'v']
+INFO:root:Write done at3
+INFO:root:Generating string ['v' 'r' 't' 'o' 'y' 'd' 'o' 'n' 'u' 'v' 'v' 'z' 'd' 'm' 'c' 'v' 'm' 'l'
+ 'm' 'f' 'd' 'j' 'w' 'c' 'j' 'x' 'h' 'd' 'q' 'u' 'p' 'x']
+INFO:root:Write done at4
+INFO:root:Generating string ['f' 'n' 'a' 'l' 's' 'p' 'n' 'i' 'q' 'l' 'w' 'a' 'f' 'o' 'i' 'i' 'g' 'g'
+ 'r' 'x' 'r' 'm' 's' 'r' 'r' 't' 'l' 't' 'b' 'i' 'i' 'k']
+INFO:root:Write done at5
+INFO:root:Generating string ['c' 's' 'c' 'i' 'd' 'x' 'o' 'n' 'i' 'z' 'h' 'o' 't' 'c' 'x' 'm' 'm' 'u'
+ 'b' 'r' 'o' 'q' 'p' 'w' 'k' 'w' 'o' 'g' 'a' 'c' 'b' 'e']
+INFO:root:Write done at6
+INFO:root:Generating string ['l' 'k' 'j' 'z' 'g' 'x' 'r' 'y' 'q' 'c' 'a' 'e' 'i' 'd' 'g' 'k' 'a' 'c'
+ 'b' 'e' 'p' 'a' 'b' 'k' 'v' 't' 'z' 'l' 'a' 'b' 'h' 'v']
+INFO:root:Write done at7
+INFO:root:Generating string ['p' 'h' 'j' 't' 'm' 'c' 'i' 'q' 'a' 'c' 'n' 'z' 'k' 'g' 'h' 'a' 'l' 'a'
+ 'm' 'm' 'a' 'z' 's' 'r' 'q' 'p' 'x' 'v' 'k' 'd' 'n' 'k']
+INFO:root:Write done at8
+INFO:root:Generating string ['v' 'f' 'o' 'c' 'c' 'v' 'p' 'b' 'l' 's' 'n' 'w' 'g' 'c' 'c' 'd' 'j' 'p'
+ 'z' 'i' 'h' 'w' 'c' 's' 'b' 'l' 'o' 'i' 'w' 'i' 'r' 'j']
+INFO:root:Write done at9
+INFO:root:Write done at-2
+INFO:root:Write done at-1

@@ -94,7 +94,7 @@ def drive_to_gf(drive):
     GF = galois.GF(2**8)
     return GF(drive)
 
-def drive_encoder(drive, drive_ids):
+def q_drive_encoder(drive, drive_ids):
     '''
     file: a list of non-negative integers of arbitary length, where each integer <=255
     drive_ids: the unique ids associated with the drive in the range of [0,255]
@@ -127,7 +127,7 @@ def Q_encoder(drive_list):
     
     for drive, dn in drive_list:
 
-        enc = drive_encoder(drive, dn)
+        enc = q_drive_encoder(drive, dn)
 
         Q = Q+enc
         

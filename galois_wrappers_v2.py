@@ -66,6 +66,7 @@ def create_parities(list_of_drives, drive_ids=None, skip_P = False, skip_Q = Fal
 def check_for_failures(drive_list, P, Q):
     '''
     Checks a drive list for failures by recomputing P and Q to see if they match
+    
     '''
     
     P_check = gf.P_encoder(drive_list) == P
