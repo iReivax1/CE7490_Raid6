@@ -12,8 +12,11 @@ from RAID_File.raid_6 import RAID
 from fileObject import FileObject
 from diskObject import DiskObject
 import logging
+import numpy as np
 
 logging.basicConfig(filename='disk.log', level=logging.INFO)
+
+np.random.seed(1337)
 
 RAID_settings = {
     'total_num_disk' : (2+8), #normal + parity disks
@@ -33,11 +36,11 @@ def main():
     logging.info("Start")
     all_disk_arr = []
     for idx in range(RAID_settings['total_num_disk']):
-        all_disk_arr.append(DiskObject(dir=RAID_settings['root_dir'], id=idx, size=RAID_settings['size_of_disk'], type='data'))
+        all_disk_arr.append(DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=idx, size=RAID_settings['size_of_disk'], type='data'))
 
-    temp_data_disk = DiskObject(dir=RAID_settings['root_dir'], id=-9, size=RAID_settings['data_disks'], type='data')
-    parity_disk = DiskObject(dir=RAID_settings['root_dir'], id=-1, size=RAID_settings['data_disks'], type='P')
-    Q_disk = DiskObject(dir=RAID_settings['root_dir'], id=-2, size=RAID_settings['data_disks'], type='Q')
+    temp_data_disk = DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=-9, size=RAID_settings['data_disks'], type='data')
+    parity_disk = DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=-1, size=RAID_settings['data_disks'], type='P')
+    Q_disk = DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=-2, size=RAID_settings['data_disks'], type='Q')
 
     
     #init raid controller for the disks
@@ -45,10 +48,23 @@ def main():
 
     # Random Generate some files and store into the data disks
     #Files contain data to be stored in the disks which are simulated as files IRL computer
+    for i in raid_6.get_disk_list():
+        print(i)
+        print(i.get_id())
+        file = FileObject()
+        file.generate_random_data(data_size=RAID_settings['size_of_file'])
+        print(file.data)
+        i.write(file.data)
+        i.get_data_block(RAID_settings['stripe_size'])
+        print(i.data_blocks)
+        print('\n')
+        
+    
+    
     file = FileObject()
     file.generate_random_data(data_size=RAID_settings['size_of_file'])
     #temp file will have
-    temp_data_disk.write(id=temp_data_disk.get_id(), data=file.get_file_content())
+    temp_data_disk.write(data=file.get_file_content())
     
 
     # Load data from data disk into RAID 6

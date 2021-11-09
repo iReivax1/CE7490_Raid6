@@ -8,36 +8,36 @@ from numpy.core.shape_base import block
 
 class DiskObject(object):
     
-    def __init__(self, dir, id, size, type='data'):
-        self.id = id
+    def __init__(self, disk_dir, disk_id, size, type='data'):
+        self.disk_id = disk_id
         self.size = size
         self.type = type
         if self.type == 'P' or self.type == 'Q':
             self.override = False
         else:
             self.override = True
-        self.dir = self.create_folders(disk_dir=os.path.join(dir, 'disk_%d' % id))
+        self.disk_dir = self.create_folders(disk_dir=os.path.join(disk_dir, 'disk_%d' % self.disk_id))
         self.data_file_path = None
         self.data_blocks = None
     
     
     def get_id(self):
-        return self.id
+        return self.disk_id
 
-    def read(self, id):
-        with open(os.path.join(self.dir, 'disk_%d' % id), 'r') as f:
+    def read(self):
+        with open(os.path.join(self.disk_dir, 'disk_%d' % self.disk_id), 'r') as f:
             return f.read()
 
 
-    def write(self, id, data):
-        with open(os.path.join(self.dir, 'disk_%d' % id), 'w') as f:
+    def write(self, data):
+        with open(os.path.join(self.disk_dir, 'disk_%d' % self.disk_id), 'w') as f:
             for i in data:
                 f.write(i)
-            logging.info('Write done at{0}'.format(self.id))
+            logging.info('Write done at{0}'.format(self.disk_id))
 
 
     def get_data_block(self, stripe_size):
-        data_content = self.read(id=self.id)
+        data_content = self.read()
 
         size_content = len(data_content)
         data_blocks = []
@@ -63,7 +63,7 @@ class DiskObject(object):
         #if path dont exist
         if not os.path.exists(disk_dir):
             os.makedirs(disk_dir)
-            logging.info('Disk {0} is created at {1}'.format(self.id, str(disk_dir)))
+            logging.info('Disk {0} is created at {1}'.format(self.disk_id, str(disk_dir)))
         else: #if exists alr delete 
             if self.override == True:
                 shutil.rmtree(disk_dir)          
