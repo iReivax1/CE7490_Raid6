@@ -47,6 +47,7 @@ def drives_to_int(list_of_drives):
             drives.append(drives_to_int(i))
             
     else: #only when the list of drives is no longer nested, i.e. it is only a single drive, convert the values in the drive to int
+        print(list_of_drives)
         drives = convert_to_int(list_of_drives)
     
     return drives

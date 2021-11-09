@@ -40,17 +40,17 @@ class RAID(object):
                                                  data_blocks=data_block_list)
         #disk list is a list ob diskobject
 
-        P, Q, drive_list = create_parities(self.disk_list)
-        print(P)
-        print(Q)
-        self.parity_disk.write(id =-1 , data=P)
-        self.q_disk.write(id =-2 , data=Q)
+        # P, Q, drive_list = create_parities(self.disk_list)
+        # print(P)
+        # print(Q)
+        # self.parity_disk.write(id =-1 , data=P)
+        # self.q_disk.write(id =-2 , data=Q)
                                                            
         disk_iterator = zip(self.disk_list, data)
         print (disk_iterator)
         for disk, data in disk_iterator:
             print(disk)
-            disk.write(id = disk.get_id() , data=''.join(self.check_empty_char(datum) for datum in data), mode='w')
+            disk.write(id = disk.get_id() , data=''.join(self.check_empty_char(datum) for datum in data))
 
         return P , Q
 
