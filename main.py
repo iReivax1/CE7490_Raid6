@@ -24,8 +24,13 @@ RAID_settings = {
     'stripe_size' : 4,
     'data_disks' : (16 * 8),  #num_normal_disk * size_of_disk
     'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
-    # 'root_dir' : '/Users/yipji/Offline Documents/Git Folder/CE7490_Raid6',
+    # 'root_dir' : '/Users/yipji/Offline Documents/Git Folder/CE7490_Raid6/C_drive',
 }
+
+
+
+
+
 
 def main():
 
