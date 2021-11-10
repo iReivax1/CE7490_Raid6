@@ -96,6 +96,7 @@ if __name__ == '__main__':
     raid_6.striping_data_blocks_to_raid_disks(data_block_list)
 
     check_striping(raid_6)
+
     for disk in raid_6.get_disk_list():
         # print(i)
         # print(i.get_id())
