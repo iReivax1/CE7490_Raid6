@@ -28,6 +28,7 @@ class DiskObject(object):
     def read(self):
         with open(os.path.join(self.disk_dir, 'disk_%d' % self.disk_id), 'r', encoding="utf-8") as f:
             return f.read()
+        
 
 
     def write(self, data):

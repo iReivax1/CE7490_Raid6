@@ -26,15 +26,13 @@ class RAID(object):
         self.disk_list = []
         self.p_disk = self.create_disk(-1,'P')
         self.q_disk = self.create_disk(-2,'Q')        
-        
+        for idx in range(self.num_normal_disk):
+            self.disk_list.append(self.create_disk(disk_id = idx, disk_type = 'data'))
     
         self.block_to_disk_mapping = None
         
         
-        for idx in range(self.num_normal_disk):
-            self.disk_list.append(self.create_disk(disk_id = idx, disk_type = 'data'))
-    
-    
+       
     ###### Utilities
     def create_disk(self, disk_id, disk_type):
         return DiskObject(disk_dir=self.root_dir, disk_id=disk_id, size=self.size_of_disk, stripe_size = self.stripe_size, type=disk_type)
@@ -135,9 +133,6 @@ class RAID(object):
             return "At least one failure"
 
             
-<<<<<<< HEAD
-   
-=======
     def update_data(self, block_global_index, new_data_block):
         """
         Update the file
@@ -246,4 +241,3 @@ class RAID(object):
             else:
                 res.append(0)
         return np.array(res, dtype=np.uint8)
->>>>>>> 794fc4f5600f4cd18fd17a5f9f76496659d62f14
