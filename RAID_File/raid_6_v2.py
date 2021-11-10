@@ -26,15 +26,13 @@ class RAID(object):
         self.disk_list = []
         self.p_disk = self.create_disk(-1,'P')
         self.q_disk = self.create_disk(-2,'Q')        
-        
+        for idx in range(self.num_normal_disk):
+            self.disk_list.append(self.create_disk(disk_id = idx, disk_type = 'data'))
     
         self.block_to_disk_mapping = None
         
         
-        for idx in range(self.num_normal_disk):
-            self.disk_list.append(self.create_disk(disk_id = idx, disk_type = 'data'))
-    
-    
+       
     ###### Utilities
     def create_disk(self, disk_id, disk_type):
         return DiskObject(disk_dir=self.root_dir, disk_id=disk_id, size=self.size_of_disk, stripe_size = self.stripe_size, type=disk_type)
@@ -210,7 +208,7 @@ class RAID(object):
         for data in data_disk:
             assert len(data) == data_blocks_per_disk
         
-        # print( np.array(data_disk))
+        print( np.array(data_disk))
         count = 0
         for i in self.get_disk_list():
             i.write(data_disk[count])

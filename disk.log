@@ -1395,6 +1395,7 @@ INFO:root:Write done at-1
 INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
 INFO:root:Write done at-2
 INFO:root:Stop
+<<<<<<< HEAD
 INFO:root:Start
 INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
 INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
@@ -1475,6 +1476,7 @@ INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\
 INFO:root:Write done at-2
 INFO:root:Write done at6
 INFO:root:Write done at3
+<<<<<<< HEAD
 INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
 INFO:root:Write done at-1
 INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
@@ -1536,6 +1538,26 @@ INFO:root:Generating string ['x' 'i' 'h' 'z' 'h' 's' 's' 'u' 'i' 'j' 'g' 'w' 'x'
  'e' 'h']
 INFO:root:Write done at-9
 INFO:root:START : Write to RAID 6
+=======
+INFO:root:Start
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Generating string ['x' 'i' 'h' 'z' 'h' 's' 's' 'u' 'i' 'j' 'g' 'w' 'x' 'y' 'b' 'g' 'w' 's'
+ 'c' 'j' 'i' 'l' 'b' 'x' 't' 'o' 'r' 'p' 't' 'z' 'd' 'u']
+INFO:root:Write done at-9
+INFO:root:Start
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Generating string ['x' 'i' 'h' 'z' 'h' 's' 's' 'u' 'i' 'j' 'g' 'w' 'x' 'y' 'b' 'g' 'w' 's'
+ 'c' 'j' 'i' 'l' 'b' 'x' 't' 'o' 'r' 'p' 't' 'z' 'd' 'u']
+INFO:root:Write done at-9
+INFO:root:Start
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Generating string ['x' 'i' 'h' 'z' 'h' 's' 's' 'u' 'i' 'j' 'g' 'w' 'x' 'y' 'b' 'g' 'w' 's'
+ 'c' 'j' 'i' 'l' 'b' 'x' 't' 'o' 'r' 'p' 't' 'z' 'd' 'u']
+INFO:root:Write done at-9
+>>>>>>> 50313772d10dbcd7b7b0db30936e7f84031b9891
 INFO:root:Write done at0
 INFO:root:Write done at1
 INFO:root:Write done at2
@@ -1544,11 +1566,15 @@ INFO:root:Write done at4
 INFO:root:Write done at5
 INFO:root:Write done at6
 INFO:root:Write done at7
+<<<<<<< HEAD
 INFO:root:END : Write to RAID 6
+=======
+>>>>>>> 50313772d10dbcd7b7b0db30936e7f84031b9891
 INFO:root:Write done at-2
 INFO:root:Write done at-1
 INFO:root:Write done at6
 INFO:root:Write done at6
+<<<<<<< HEAD
 INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
 INFO:root:Write done at-1
 INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
@@ -1566,3 +1592,24 @@ INFO:root:Write done at-1
 INFO:root:Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
 INFO:root:Write done at-2
 INFO:root:Stop
+=======
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Write done at-1
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Write done at-2
+INFO:root:Write done at6
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Write done at-1
+INFO:root:Write done at6
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Write done at-2
+INFO:root:Write done at6
+INFO:root:Write done at3
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-1 is already created
+INFO:root:Write done at-1
+INFO:root:Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive/disk_-2 is already created
+INFO:root:Write done at-2
+INFO:root:Stop
+=======
+>>>>>>> parent of 794fc4f (modified striping)
+>>>>>>> 50313772d10dbcd7b7b0db30936e7f84031b9891
