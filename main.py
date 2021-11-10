@@ -28,18 +28,6 @@ RAID_settings = {
     'size_of_file': (8*4), #size of all the data to be generated which will be stripped and allocated into the #n disks
     'stripe_size' : 4,
     'data_disks' : (16 * 8),  #num_normal_disk * size_of_disk
-<<<<<<< HEAD
-    'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
-    # 'root_dir' : '/Users/yipji/Offline Documents/Git Folder/CE7490_Raid6/C_drive',
-}
-
-
-
-
-
-
-def main():
-=======
     # 'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
     # 'root_dir' : '/Users/yipji/Offline Documents/Git Folder/CE7490_Raid6',
     'root_dir': os.getcwd() + '\\C_drive'
@@ -75,7 +63,6 @@ def before_recovery(raid_6, toggle = None, silence_header = False):
             raise Exception('Test Failed')
 
 if __name__ == '__main__':
->>>>>>> 5ec07fe34adffc6a52dec6fb140a103717138591
 
     logging.info("Start")
     # all_disk_arr = []
