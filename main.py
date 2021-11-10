@@ -22,6 +22,7 @@ np.random.seed(1337)
 
 RAID_settings = {
     # 'total_num_disk' : (2+8), #normal + parity disks
+<<<<<<< HEAD
     'num_normal_disk': 8,  # 8 data disks
     'num_parity_disk': 2,  # 1 parity # 1 RS
     # should be multiple of stripe size  and size_of_disk * num_normal disk > size_of_file
@@ -31,6 +32,15 @@ RAID_settings = {
     'stripe_size': 4,
     'data_disks': (16 * 8),  # num_normal_disk * size_of_disk
     'root_dir': '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
+=======
+    'num_normal_disk' : 8, # 8 data disks
+    'num_parity_disk': 2, #1 parity # 1 RS
+    'size_of_disk': 16, #should be multiple of stripe size  and size_of_disk * num_normal disk > size_of_file
+    'size_of_file': (8*4), #size of all the data to be generated which will be stripped and allocated into the #n disks
+    'stripe_size' : 4,
+    'data_disks' : (16 * 8),  #num_normal_disk * size_of_disk. This is the size of the mega file to be stripped
+    # 'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
+>>>>>>> parent of 794fc4f (modified striping)
     # 'root_dir' : '/Users/yipji/Offline Documents/Git Folder/CE7490_Raid6',
     # 'root_dir': os.getcwd() + '\\C_drive'
 }
@@ -80,6 +90,7 @@ if __name__ == '__main__':
 
     logging.info("Start")
 
+<<<<<<< HEAD
     # init raid controller for the disks
     raid_6 = RAID(root_dir=RAID_settings['root_dir'],
                   num_normal_disk=RAID_settings['num_normal_disk'],
@@ -109,6 +120,35 @@ if __name__ == '__main__':
 
     print(raid_6.compute_Q(write=True))
     print(raid_6.compute_P(write=True))
+=======
+    #init raid controller for the disks
+    raid_6 = RAID(root_dir = RAID_settings['root_dir'], 
+                  num_normal_disk = RAID_settings['num_normal_disk'], 
+                  size_of_disk = RAID_settings['size_of_disk'], 
+                  stripe_size = RAID_settings['stripe_size'] )
+    # Random Generate some files and store into the data disks
+    
+    temp_data_disk = DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=-9, size=RAID_settings['data_disks'], stripe_size = RAID_settings['stripe_size'], type='data')
+    
+    #create a file to put in the temp data disk
+    file = FileObject()
+    file.generate_random_data(data_size=RAID_settings['data_disks'])
+    
+    #store file into temp data disk
+    temp_data_disk.write(data=file.get_file_content())
+    
+
+    # Load data from data disk into RAID 6
+    logging.info("START : Write to RAID 6")
+    
+    msg = raid_6.striping_data_blocks_to_raid_disks(temp_data_disk.get_data_block())
+    print(msg)
+
+        
+    print('------------START UNIT TESTS---------------')
+    print(raid_6.compute_Q(write = True))
+    print(raid_6.compute_P(write = True))
+>>>>>>> parent of 794fc4f (modified striping)
     print('Test if the P and Q drives have been computed and stored correctly')
     print(raid_6.check_for_failure())
     if raid_6.check_for_failure() == "No failures":
