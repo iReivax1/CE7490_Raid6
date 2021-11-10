@@ -28,9 +28,9 @@ RAID_settings = {
     'size_of_file': (8*4), #size of all the data to be generated which will be stripped and allocated into the #n disks
     'stripe_size' : 4,
     'data_disks' : (16 * 8),  #num_normal_disk * size_of_disk. This is the size of the mega file to be stripped
-    'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
+    # 'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
     # 'root_dir' : '/Users/yipji/Offline Documents/Git Folder/CE7490_Raid6',
-    # 'root_dir': os.getcwd() + '\\C_drive'
+    'root_dir': os.getcwd() + '\\C_drive'
 }
 
 # Helper functions for unit tests
