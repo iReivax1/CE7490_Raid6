@@ -229,49 +229,4 @@ def two_drives_lost(P, Q, remaining_disks, missing_disk_id_1, missing_disk_id_2)
     Dy = (P+Pxy) + Dx
     
     return Dx, Dy
-
-# if __name__ == '__main__':
-#     '''
-#     The code below is broken due to refactoring.
-#     '''
-    
-#     print('we will now test if the encoder and decoder works')
-#     d0 = ['l33t','1234']
-#     d1 = ['0984','asdw']
-#     d2 = ['kzje','2f4a']
-#     list_of_drives = [d0,d1,d2]
-#     drive_list = assign_drive_ids(drives_to_int(list_of_drives))
-#     print(f' the drives are {drive_list}')
-    
-#     Q = Q_encoder(drive_list)
-#     P = P_encoder(drive_list)
-#     print(f' the backup Q drive is {Q}')
-    
-#     print('\nnow imagine d0 is lost')
-#     remaining_drives = drive_list.copy()
-#     remaining_drives.pop(0)
-#     d0x = Q_decoder(Q, remaining_drives, 0)
-#     print(f' the original drive was \n {d0} \n and the recovered drive is \n {d0x[0]}')    
-    
-#     print('\nnow imagine d1 is lost')
-#     remaining_drives = drive_list.copy()
-#     remaining_drives.pop(1)
-#     d1x = Q_decoder(Q, remaining_drives, 1)
-#     print(f' the original drive was \n {d1} \n and the recovered drive is \n {d1x[0]}')
-    
-#     print('\nnow imagine d2 is lost')
-#     remaining_drives = drive_list.copy()
-#     remaining_drives.pop(2)
-#     d2x = Q_decoder(Q, remaining_drives, 2)
-#     print(f' the original drive was \n {d2} \n and the recovered drive is \n {d2x[0]}')
-    
-#     print('\nNow imagine d1 and d2 are lost')
-#     remaining_drives = drive_list.copy()
-#     remaining_drives.pop(1)
-#     remaining_drives.pop(1)
-#     d1x, d2x = two_drives_lost(P,Q, remaining_drives, 1, 2)
-#     print(f' \nthe original drive was \n {convert_to_int(d1)} \n and the recovered drive is \n {d1x[0]}')
-#     print(f' \nthe original drive was \n {convert_to_int(d2)} \n and the recovered drive is \n {d2x[0]}')
-#     print(f' \nthe original drive in characters was \n {d1} \n and the recovered drive is \n {convert_to_chr(d1x[0])}')
-#     print(f' \nthe original drive in characters was \n {d2} \n and the recovered drive is \n {convert_to_chr(d2x[0])}')
     

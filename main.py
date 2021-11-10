@@ -22,12 +22,12 @@ np.random.seed(1337)
 
 RAID_settings = {
     # 'total_num_disk' : (2+8), #normal + parity disks
-    'num_normal_disk' : 8, # 8 data disks
     'num_parity_disk': 2, #1 parity # 1 RS
+    'num_normal_disk' : 8, # 8 data disks
     'size_of_disk': 16, #should be multiple of stripe size  and size_of_disk * num_normal disk > size_of_file
-    'size_of_file': (8*4), #size of all the data to be generated which will be stripped and allocated into the #n disks
+    'size_of_file': (16*8), #size of all the data to be generated which will be stripped and allocated into the #n disks
     'stripe_size' : 4,
-    'data_disks' : (16 * 8),  #num_normal_disk * size_of_disk
+    # 'data_disks' : (16 * 8),  #num_normal_disk * size_of_disk. This is the size of the mega file to be stripped
     # 'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
     # 'root_dir' : '/Users/yipji/Offline Documents/Git Folder/CE7490_Raid6',
     'root_dir': os.getcwd() + '\\C_drive'
@@ -65,34 +65,33 @@ def before_recovery(raid_6, toggle = None, silence_header = False):
 if __name__ == '__main__':
 
     logging.info("Start")
-    # all_disk_arr = []
-    # for idx in range(RAID_settings['total_num_disk']):
-    #     all_disk_arr.append(DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=idx, size=RAID_settings['size_of_disk'], type='data'))
 
-    # temp_data_disk = DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=-9, size=RAID_settings['data_disks'], type='data')
-    # parity_disk = DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=-1, size=RAID_settings['data_disks'], type='P')
-    # Q_disk = DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=-2, size=RAID_settings['data_disks'], type='Q')
-
-    
     #init raid controller for the disks
-    # raid_6 = RAID(disk_list=all_disk_arr, num_normal_disk=RAID_settings['num_normal_disk'],parity_disk=parity_disk, q_disk=Q_disk, stripe_size = RAID_settings['stripe_size'] )
     raid_6 = RAID(root_dir = RAID_settings['root_dir'], 
                   num_normal_disk = RAID_settings['num_normal_disk'], 
                   size_of_disk = RAID_settings['size_of_disk'], 
                   stripe_size = RAID_settings['stripe_size'] )
-    # Random Generate some files and store into the data disks
-    #Files contain data to be stored in the disks which are simulated as files IRL computer
-    for i in raid_6.get_disk_list():
-        # print(i)
-        # print(i.get_id())
-        file = FileObject()
-        file.generate_random_data(data_size=RAID_settings['size_of_file'])
-        # print(file.data)
-        i.write(file.data)
-        i.get_data_block()
-        # print('\n')
-        
+   
+    #init temp data_disk to store file
+    temp_data_disk = DiskObject(disk_dir=RAID_settings['root_dir'], disk_id=-9, size=RAID_settings['size_of_file'], stripe_size = RAID_settings['stripe_size'], type='data')
     
+    #create a file to put in the temp data disk
+    file = FileObject()
+    
+     # Random Generate some files and store into the data disks
+    file.generate_random_data(data_size=RAID_settings['size_of_file'])
+    
+    #store file into temp data disk
+    temp_data_disk.write(data=file.get_file_content())
+    
+    # Load data from data disk into RAID 6
+    logging.info("START : Write to RAID 6")
+    
+    msg = raid_6.striping_data_blocks_to_raid_disks(temp_data_disk.get_data_block())
+    print(msg)
+    logging.info("END : Write to RAID 6")
+        
+    print('------------START UNIT TESTS---------------')
     print(raid_6.compute_Q(write = True))
     print(raid_6.compute_P(write = True))
     print('Test if the P and Q drives have been computed and stored correctly')
@@ -283,18 +282,6 @@ if __name__ == '__main__':
     
     
     
-    # file = FileObject()
-    # file.generate_random_data(data_size=RAID_settings['size_of_file'])
-    # #temp file will have
-    # temp_data_disk.write(data=file.get_file_content())
-    
-
-    # # Load data from data disk into RAID 6
-    # logging.info("START : Write to RAID 6")
-    # #data_block_list = array of data blocks of sized == stripe size. each block will be assigned to one disks
-    # data_block_list = temp_data_disk.get_data_block(stripe_size=RAID_settings['stripe_size'])
-    #put the data into the different raid 6 disks and P, Q disks
-    # raid_6.stripe_data_build_parity(data_block_list=data_block_list)
 
 
     
