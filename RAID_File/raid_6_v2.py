@@ -131,49 +131,7 @@ class RAID(object):
         else:
             return "At least one failure"
 
-            
-    def update_data(self, block_global_index, new_data_block):
-        """
-        Update the file
-        :param block_global_index: the block's index that need to be updated
-        :param new_data_block: new data block
-        :return: None
-        """
-        # First get the block position in the RAID 6
-
-        disk_id, chuck_id = self.block_to_disk_mapping[block_global_index]
-        self.data_block_list[block_global_index] = new_data_block
-        str_data = self._byte_to_str(new_data_block)
-        int_data = self._str_to_order(str_data)[0]
-
-        # Generate the new parity, by only computing the block that is changed.
-
-        parity_int, parity_char = self.gf.gen_parity(data=np.array(int_data).reshape([1, -1]))
-        logging.info(log_str='Get the parity:\n{}'.format(self.parity_int))
-        parity_char = parity_char.reshape([-1])
-        parity_int = parity_int.reshape([-1])
-
-        # Update the parity (only for class attribute maintenance)
-        for i in range(self.config.parity_disk_count):
-            self.parity_int[i][chuck_id] = parity_int[i]
-            self.parity_char[i][chuck_id] = parity_char[i]
-        logging.info(log_str='Get the updated parity:\n{}'.format(self.parity_int))
-
-        # Write the updated data and parity to disks
-        for i in range(self.config.data_disk_count, self.config.disk_count):
-            disk = self.disk_list[i]
-            disk.write_to_disk(disk=disk, data="".join(
-                self.no_empty_chr(val) for val in self.parity_char[i - self.config.data_disk_count]), mode='w')
-        disk = self.disk_list[disk_id]
-
-        old_data_block = disk.read(disk=disk)
-        res = self._byte_to_str(old_data_block)
-        new_res = list(deepcopy(res))
-        new_res[chuck_id] = self._byte_to_str(new_data_block)[0]
-        new_res = "".join(new_res)
-        disk.write(disk=disk, data="".join(self.no_empty_chr(val) for val in new_res),
-                            mode='w')
-
+        
     # #striping from temp data disk to the raid disks
     def striping_data_blocks_to_raid_disks(self, data_blocks):
         disk_index = 0
