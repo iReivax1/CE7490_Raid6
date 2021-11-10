@@ -1,7 +1,6 @@
 import galois 
 import numpy as np
 import concurrent.futures
-from fileObject import FileObject
 import logging
 from copy import deepcopy
 import galois_functions as gf
@@ -207,8 +206,7 @@ class RAID(object):
                     data_disk[index].append(pad_block)
         for data in data_disk:
             assert len(data) == data_blocks_per_disk
-        
-        print( np.array(data_disk))
+                
         count = 0
         for i in self.get_disk_list():
             i.write(data_disk[count])

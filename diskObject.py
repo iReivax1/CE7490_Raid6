@@ -17,7 +17,6 @@ class DiskObject(object):
         else:
             self.override = True
         self.disk_dir = self.create_folders(disk_dir=os.path.join(disk_dir, 'disk_%d' % self.disk_id))
-        self.data_file_path = None
         self.data_blocks = None
         self.stripe_size = stripe_size
     

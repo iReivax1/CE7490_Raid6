@@ -15,12 +15,6 @@ class FileObject(object):
     def get_file_content(self):
         return np.array(self.data)
     
-    def byte_to_string(self, bytes):
-        try:
-            string_data = str(bytes.decode('utf-8'))
-            return string_data
-        except Exception:
-            print('not decodable')
 
     #generate 'data_size' number of ascii characters
     def generate_random_data(self, data_size):
@@ -31,11 +25,3 @@ class FileObject(object):
         self.data = np.random.choice(ascii_list, size=data_size)
         logging.info('Generating string {0}'.format(str(self.data)))
   
-
-    def update(self, idx, new_data):
-        if idx > len(self.data):
-            print ('index out of bound')
-            return 
-        else:
-            self.data[idx] = new_data
-            logging.info('File updated to {0} state'. format(datum for datum in self.data))

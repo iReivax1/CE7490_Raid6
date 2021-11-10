@@ -1,0 +1,385 @@
+Start
+Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+Generating string ['x' 'i' 'h' 'z' 'h' 's' 's' 'u' 'i' 'j' 'g' 'w' 'x' 'y' 'b' 'g' 'w' 's'
+ 'c' 'j' 'i' 'l' 'b' 'x' 't' 'o' 'r' 'p' 't' 'z' 'd' 'u' 'i' 'i' 'h' 'j'
+ 'e' 'b' 'm' 'g' 'e' 'u' 's' 'v' 'o' 'x' 'u' 's' 'd' 'j' 'c' 'k' 'e' 'i'
+ 'o' 'g' 'd' 'y' 'i' 'p' 'h' 'e' 'd' 's' 'j' 'r' 'n' 's' 'm' 'q' 'n' 't'
+ 'y' 's' 'b' 'n' 'a' 'r' 'j' 'u' 'n' 'c' 'q' 'q' 'h' 'u' 'w' 'v' 'g' 'm'
+ 't' 'a' 'q' 'u' 's' 'f' 'j' 'z' 'q' 's' 's' 'x' 't' 'g' 'k' 'n' 'k' 't'
+ 'n' 'q' 'd' 'j' 'm' 'n' 'p' 'a' 'm' 'h' 't' 'l' 'b' 'g' 'b' 'i' 't' 'j'
+ 'e' 'h']
+Write done at-9
+START : Write to RAID 6
+Write done at0
+Write done at1
+Write done at2
+Write done at3
+Write done at4
+Write done at5
+Write done at6
+Write done at7
+data disks written
+------------START UNIT TESTS---------------
+Write done at-2
+Q has been computed and written to the Q drive
+Write done at-1
+P has been computed and written to the P drive
+Test if the P and Q drives have been computed and stored correctly
+No failures
+PASS
+-------------------
+
+ Test if we correctly detect the failure
+At least one failure
+PASS
+-------------------
+
+ Test if we can replace the original disks
+No failures
+PASS
+-------------------
+
+ Test if the lost disk is recoverable without use of wrapper
+
+ before recovery
+At least one failure
+PASS
+
+ recovery
+recovered drive is
+['torp', 'dyip', 'gmta', 'bgbi']
+original drive was
+['torp', 'dyip', 'gmta', 'bgbi']
+PASS
+Write done at6
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 1: loss of 1 data drive
+
+ before recovery
+At least one failure
+PASS
+
+ recovery
+Write done at6
+Disk id 6 recovered and restored.
+Took 0.0346 seconds
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 2: loss of P drive
+
+ before recovery
+P disk failure
+PASS
+
+ recovery
+Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+Write done at-1
+P has been computed and written to the P drive
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 3: loss of Q drive
+
+ before recovery
+Q disk failure
+PASS
+
+ recovery
+Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+Write done at-2
+Q has been computed and written to the Q drive
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 4: loss of 1 data drive and P drive
+
+ before recovery
+At least one failure
+PASS
+P disk failure
+PASS
+
+ recovery
+Write done at6
+Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+Write done at-1
+Disk id 6 recovered and restored; in addition P has been computed and written to the P drive
+Took 0.2360 seconds
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 5: loss of 1 data drive and Q drive
+
+ before recovery
+At least one failure
+PASS
+Q disk failure
+PASS
+
+ recovery
+Write done at6
+Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+Write done at-2
+Disk id 6 recovered and restored; in addition Q has been computed and written to the Q drive
+Took 0.0296 seconds
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 6: loss of 2 data drives
+
+ before recovery
+At least one failure
+PASS
+
+ recovery
+Write done at6
+Write done at3
+Disk id 6 and 3 recovered and restored
+Took 0.0469 seconds
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 7: loss of P and Q drives
+
+ before recovery
+Q disk failure
+PASS
+P disk failure
+PASS
+
+ recovery
+Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
+Write done at-1
+Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
+Write done at-2
+P has been computed and written to the P driveand; 
+ Q has been computed and written to the Q drive
+Took 0.0316 seconds
+
+ after recovery
+No failures
+PASS
+---------TESTS COMPLETED----------
+Stop
+Start
+Disk -1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_-1
+Disk -2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_-2
+Disk 0 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_0
+Disk 1 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_1
+Disk 2 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_2
+Disk 3 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_3
+Disk 4 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_4
+Disk 5 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_5
+Disk 6 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_6
+Disk 7 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_7
+Disk -9 is created at /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_-9
+Generating string ['x' 'i' 'h' 'z' 'h' 's' 's' 'u' 'i' 'j' 'g' 'w' 'x' 'y' 'b' 'g' 'w' 's'
+ 'c' 'j' 'i' 'l' 'b' 'x' 't' 'o' 'r' 'p' 't' 'z' 'd' 'u' 'i' 'i' 'h' 'j'
+ 'e' 'b' 'm' 'g' 'e' 'u' 's' 'v' 'o' 'x' 'u' 's' 'd' 'j' 'c' 'k' 'e' 'i'
+ 'o' 'g' 'd' 'y' 'i' 'p' 'h' 'e' 'd' 's' 'j' 'r' 'n' 's' 'm' 'q' 'n' 't'
+ 'y' 's' 'b' 'n' 'a' 'r' 'j' 'u' 'n' 'c' 'q' 'q' 'h' 'u' 'w' 'v' 'g' 'm'
+ 't' 'a' 'q' 'u' 's' 'f' 'j' 'z' 'q' 's' 's' 'x' 't' 'g' 'k' 'n' 'k' 't'
+ 'n' 'q' 'd' 'j' 'm' 'n' 'p' 'a' 'm' 'h' 't' 'l' 'b' 'g' 'b' 'i' 't' 'j'
+ 'e' 'h']
+Write done at-9
+START : Write to RAID 6
+Write done at0
+Write done at1
+Write done at2
+Write done at3
+Write done at4
+Write done at5
+Write done at6
+Write done at7
+data disks written
+------------START UNIT TESTS---------------
+Write done at-2
+Q has been computed and written to the Q drive
+Write done at-1
+P has been computed and written to the P drive
+Test if the P and Q drives have been computed and stored correctly
+No failures
+PASS
+-------------------
+
+ Test if we correctly detect the failure
+At least one failure
+PASS
+-------------------
+
+ Test if we can replace the original disks
+No failures
+PASS
+-------------------
+
+ Test if the lost disk is recoverable without use of wrapper
+
+ before recovery
+At least one failure
+PASS
+
+ recovery
+recovered drive is
+['torp', 'dyip', 'gmta', 'bgbi']
+original drive was
+['torp', 'dyip', 'gmta', 'bgbi']
+PASS
+Write done at6
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 1: loss of 1 data drive
+
+ before recovery
+At least one failure
+PASS
+
+ recovery
+Write done at6
+Disk id 6 recovered and restored.
+Took 0.0213 seconds
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 2: loss of P drive
+
+ before recovery
+P disk failure
+PASS
+
+ recovery
+Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_-1 is already created
+Write done at-1
+P has been computed and written to the P drive
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 3: loss of Q drive
+
+ before recovery
+Q disk failure
+PASS
+
+ recovery
+Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_-2 is already created
+Write done at-2
+Q has been computed and written to the Q drive
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 4: loss of 1 data drive and P drive
+
+ before recovery
+At least one failure
+PASS
+P disk failure
+PASS
+
+ recovery
+Write done at6
+Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_-1 is already created
+Write done at-1
+Disk id 6 recovered and restored; in addition P has been computed and written to the P drive
+Took 0.1131 seconds
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 5: loss of 1 data drive and Q drive
+
+ before recovery
+At least one failure
+PASS
+Q disk failure
+PASS
+
+ recovery
+Write done at6
+Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_-2 is already created
+Write done at-2
+Disk id 6 recovered and restored; in addition Q has been computed and written to the Q drive
+Took 0.0173 seconds
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 6: loss of 2 data drives
+
+ before recovery
+At least one failure
+PASS
+
+ recovery
+Write done at6
+Write done at3
+Disk id 6 and 3 recovered and restored
+Took 0.0277 seconds
+
+ after recovery
+No failures
+PASS
+-------------------
+
+ TEST FAILURE MODE 7: loss of P and Q drives
+
+ before recovery
+Q disk failure
+PASS
+P disk failure
+PASS
+
+ recovery
+Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_-1 is already created
+Write done at-1
+Disk /Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6\C_drive/disk_-2 is already created
+Write done at-2
+P has been computed and written to the P driveand; 
+ Q has been computed and written to the Q drive
+Took 0.0181 seconds
+
+ after recovery
+No failures
+PASS
+---------TESTS COMPLETED----------
+Stop
