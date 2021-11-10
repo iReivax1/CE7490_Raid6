@@ -117,7 +117,6 @@ if __name__ == '__main__':
     print('------------START UNIT TESTS---------------')
     print(raid_6.compute_Q(write = True))
     print(raid_6.compute_P(write = True))
->>>>>>> parent of 794fc4f (modified striping)
     print('Test if the P and Q drives have been computed and stored correctly')
     print(raid_6.check_for_failure())
     if raid_6.check_for_failure() == "No failures":
