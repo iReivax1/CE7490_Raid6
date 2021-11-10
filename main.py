@@ -16,7 +16,11 @@ import numpy as np
 from galois_wrappers_v2 import galois_drive_recovery
 import galois_functions_v2 as gf
 
-logging.basicConfig(filename='disk.log', level=logging.INFO)
+# logging.basicConfig(filename='disk.log', level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+logger = logging.getLogger()
+logger.addHandler(logging.FileHandler('unit_test.log', 'a'))
+print = logger.info
 
 np.random.seed(1337)
 
@@ -286,56 +290,4 @@ if __name__ == '__main__':
 
     print('---------TESTS COMPLETED----------')
     logging.info("Stop")
-
-    # file = FileObject()
-    # file.generate_random_data(data_size=RAID_settings['size_of_file'])
-    # #temp file will have
-    # temp_data_disk.write(data=file.get_file_content())
-
-    # # Load data from data disk into RAID 6
-    # logging.info("START : Write to RAID 6")
-    # #data_block_list = array of data blocks of sized == stripe size. each block will be assigned to one disks
-    # data_block_list = temp_data_disk.get_data_block(stripe_size=RAID_settings['stripe_size'])
-    # put the data into the different raid 6 disks and P, Q disks
-    # raid_6.stripe_data_build_parity(data_block_list=data_block_list)
-
-    # logging.log_str("START : Read corrupted data")
-
-    # data = raid_6.read_all_data_disks()
-    # raid_6.check_corruption(disk_data_in_int=data)
-
-    # logging.log_str("START : Recovery of data")
-    # # Start to do the recover test
-    # corrupted_disk_list = [3, 4]
-    # for disk_id in corrupted_disk_list:
-    #     with open(file=os.path.join(raid_6.disk_list[disk_id].disk_path, 'data'), mode='w') as f:
-    #         f.write("")
-    #         logging.log_str('Disk {}\'s data is erased'.format(disk_id))
-
-    # raid_6.recover_disk(corrupted_disk_index=(3, 4))
-    # raid_6.read_from_disk_and_generate_data()
-
-    # # Update one char in file and re-generate
-    # logging.log_str("START : UPDATE")
-
-    # file.update(idx=0, new_data='t')
-    # data_disk.write(id=data_disk.get_id, data=file.get_file_content)
-    # data_block_list = data_disk.get_data_block(stripe_size=RAID_settings['stripe_size'])
-    # for i, new_data, old_data in zip(range(len(data_block_list)), data_block_list, raid_6.data_block_list):
-    #     if new_data != old_data:
-    #         raid_6.update_data(block_global_index=i, new_data_block=new_data)
-    #         break
-
-    # raid_6.read_from_disk_and_generate_data()
-
-    # # Update one char in file and re-generate
-
-    # file.update(idx=1, new_data='d')
-    # data_disk.write(id=data_disk.get_id, data=file.get_file_content)
-    # data_block_list = data_disk.get_data_block(stripe_size=RAID_settings['stripe_size'])
-    # for i, new_data, old_data in zip(range(len(data_block_list)), data_block_list, raid_6.data_block_list):
-    #     if new_data != old_data:
-    #         raid_6.update_data(block_global_index=i, new_data_block=new_data)
-    #         break
-
-    # raid_6.read_from_disk_and_generate_data()
+    logging.shutdown()
