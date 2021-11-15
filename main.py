@@ -3,18 +3,13 @@ import sys
 import os
 import sys
 
-# ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
-# sys.path.append(ROOT_DIR)
-# PAR_PATH = os.path.abspath(os.path.join(ROOT_DIR, os.pardir))
-# sys.path.append(PAR_PATH)
-
-from RAID_File.raid_6_v2 import RAID
+from RAID_File.raid_6 import RAID
 from fileObject import FileObject
 from diskObject import DiskObject
 import logging
 import numpy as np
-from galois_wrappers_v2 import galois_drive_recovery
-import galois_functions_v2 as gf
+from galois_wrappers import galois_drive_recovery
+import galois_functions as gf
 
 # logging.basicConfig(filename='disk.log', level=logging.INFO)
 logging.basicConfig(level=logging.INFO, format='%(message)s')
