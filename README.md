@@ -1,7 +1,7 @@
 
-
 ## Raid 6 (A proof of concept implementation) 
 
+This repo is for the purpose of CE7490 project 2. Raid 6 configuration is implemented with dummy storage system.
 
 ## Install requirements
 `pip install -r requirements.txt` 
