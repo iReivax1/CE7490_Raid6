@@ -20,7 +20,7 @@ import galois_functions_v2 as gf
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger()
 logger.addHandler(logging.FileHandler('unit_test.log', 'a'))
-print = logger.info
+logging.info = logger.info
 
 np.random.seed(1337)
 
@@ -34,17 +34,19 @@ RAID_settings = {
     'data_disks' : (16 * 8),  #num_normal_disk * size_of_disk. This is the size of the mega file to be stripped
     # 'root_dir' : '/Users/xavier/Documents/NTU/CE7490/Assignment_2/RAID-6/C_drive',
     # 'root_dir' : '/Users/yipji/Offline Documents/Git Folder/CE7490_Raid6',
-    'root_dir': os.getcwd() + '\\C_drive'
+    'root_dir': os.getcwd() + '\\C_drive',
+    'disk_failure_1': 6,
+    'disk_failure_2': 3,
 }
 
 # Helper functions for unit tests
 
 
 def after_recovery(raid_6):
-    print('\n after recovery')
-    print(raid_6.check_for_failure())
+    logging.info('\n after recovery')
+    logging.info(raid_6.check_for_failure())
     if raid_6.check_for_failure() == "No failures":
-        print('PASS')
+        logging.info('PASS')
     else:
         raise Exception('Test Failed')
     return
@@ -52,21 +54,21 @@ def after_recovery(raid_6):
 
 def before_recovery(raid_6, toggle=None, silence_header=False):
     if not silence_header:
-        print("\n before recovery")
-    print(raid_6.check_for_failure())
+        logging.info("\n before recovery")
+    logging.info(raid_6.check_for_failure())
     if toggle == None:
         if raid_6.check_for_failure() == "At least one failure":
-            print('PASS')
+            logging.info('PASS')
         else:
             raise Exception('Test Failed')
     elif toggle == 'p':
         if raid_6.check_for_failure() == "P disk failure":
-            print('PASS')
+            logging.info('PASS')
         else:
             raise Exception('Test Failed')
     elif toggle == 'q':
         if raid_6.check_for_failure() == "Q disk failure":
-            print('PASS')
+            logging.info('PASS')
         else:
             raise Exception('Test Failed')
 
@@ -74,7 +76,7 @@ def check_striping(raid_6):
 
     for disk in raid_6.get_disk_list():
         data = disk.read()
-        print(data)
+        logging.info(data)
 
 
 
@@ -103,121 +105,123 @@ if __name__ == '__main__':
     logging.info("START : Write to RAID 6")
     
     msg = raid_6.striping_data_blocks_to_raid_disks(temp_data_disk.get_data_block())
-    print(msg)
+    logging.info(msg)
 
         
-    print('------------START UNIT TESTS---------------')
-    print(raid_6.compute_Q(write = True))
-    print(raid_6.compute_P(write = True))
-    print('Test if the P and Q drives have been computed and stored correctly')
-    print(raid_6.check_for_failure())
+    logging.info('------------START UNIT TESTS---------------')
+    logging.info(raid_6.compute_Q(write = True))
+    logging.info(raid_6.compute_P(write = True))
+    logging.info('Test if the P and Q drives have been computed and stored correctly')
+    logging.info(raid_6.check_for_failure())
     if raid_6.check_for_failure() == "No failures":
-        print('PASS')
+        logging.info('PASS')
     else:
         raise Exception('Test Failed')
 
     # Manual disk corruption settings
     original_disks = raid_6.get_disk_list().copy()
 
-    pop_1 = 6
+    pop_1 = RAID_settings['disk_failure_1']
+    # pop_1 = 6
     broken_1_disks = original_disks.copy()
     poped_1 = broken_1_disks.pop(pop_1)
     missing_disk_id_1 = poped_1.get_id()
 
-    pop_2 = 3
+    # pop_2 = 3
+    pop_2 = RAID_settings['disk_failure_2']
     broken_2_disks = broken_1_disks.copy()
     poped_2 = broken_2_disks.pop(pop_2)
     missing_disk_id_2 = poped_2.get_id()
 
-    print('-------------------')
-    print('\n Test if we correctly detect the failure')
+    logging.info('-------------------')
+    logging.info('\n Test if we correctly detect the failure')
     raid_6.disk_list = broken_1_disks
-    print(raid_6.check_for_failure())
+    logging.info(raid_6.check_for_failure())
     if raid_6.check_for_failure() == "At least one failure":
-        print('PASS')
+        logging.info('PASS')
     else:
         raise Exception('Test Failed')
 
-    print('-------------------')
+    logging.info('-------------------')
 
-    print('\n Test if we can replace the original disks')
+    logging.info('\n Test if we can replace the original disks')
     raid_6.disk_list = original_disks
-    print(raid_6.check_for_failure())
+    logging.info(raid_6.check_for_failure())
     if raid_6.check_for_failure() == "No failures":
-        print('PASS')
+        logging.info('PASS')
     else:
         raise Exception('Test Failed')
 
-    print('-------------------')
+    logging.info('-------------------')
 
-    print('\n Test if the lost disk is recoverable without use of wrapper')
+    logging.info('\n Test if the lost disk is recoverable without use of wrapper')
     raid_6.disk_list = broken_1_disks.copy()
     before_recovery(raid_6)
 
-    print('\n recovery')
+    logging.info('\n recovery')
     rD = gf.P_decoder(P=gf.drive_to_gf(raid_6.get_P()),
                       remaining_disks=broken_1_disks,
                       missing_disk_id=missing_disk_id_1)
     rD = gf.convert_to_chr(gf.convert_to_numpy(rD))
-    print('recovered drive is')
-    print(rD)
-    print('original drive was')
-    print(poped_1.get_data_block())
+    logging.info('recovered drive is')
+    logging.info(rD)
+    logging.info('original drive was')
+    logging.info(poped_1.get_data_block())
     if rD == poped_1.get_data_block():
-        print("PASS")
+        logging.info("PASS")
     else:
         raise Exception('Test Failed')
 
     raid_6.add_new_data_disk(rD, missing_disk_id_1)
     after_recovery(raid_6)
 
-    print('-------------------')
+    logging.info('-------------------')
 
-    print('\n TEST FAILURE MODE 1: loss of 1 data drive')
+    logging.info('\n TEST FAILURE MODE 1: loss of 1 data drive')
 
     raid_6.disk_list = broken_1_disks.copy()
     before_recovery(raid_6)
 
-    print('\n recovery')
+    logging.info('\n recovery')
     msg = galois_drive_recovery(raid_6=raid_6,
                                 mode=1,
                                 P=gf.drive_to_gf(raid_6.get_P()),
                                 missing_disk_id_1=missing_disk_id_1
                                 )
-    print(msg)
+    logging.info(msg)
     after_recovery(raid_6)
 
-    print('-------------------')
+    logging.info('-------------------')
 
-    print('\n TEST FAILURE MODE 2: loss of P drive')
+    logging.info('\n TEST FAILURE MODE 2: loss of P drive')
     raid_6.p_disk = None
     before_recovery(raid_6, 'p')
 
-    print('\n recovery')
+    logging.info('\n recovery')
     msg = galois_drive_recovery(raid_6=raid_6,
                                 mode=2,
                                 Q=gf.drive_to_gf(raid_6.get_Q()),
                                 )
-    print(msg)
+    logging.info(msg)
     after_recovery(raid_6)
 
-    print('-------------------')
+    logging.info('-------------------')
 
-    print('\n TEST FAILURE MODE 3: loss of Q drive')
+    logging.info('\n TEST FAILURE MODE 3: loss of Q drive')
     raid_6.q_disk = None
     before_recovery(raid_6, 'q')
 
-    print('\n recovery')
+    logging.info('\n recovery')
     msg = galois_drive_recovery(raid_6=raid_6,
                                 mode=3,
                                 P=gf.drive_to_gf(raid_6.get_P()),
                                 )
-    print(msg)
+    logging.info(msg)
     after_recovery(raid_6)
 
-    print('-------------------')
+    logging.info('-------------------')
 
-    print('\n TEST FAILURE MODE 4: loss of 1 data drive and P drive')
+    logging.info('\n TEST FAILURE MODE 4: loss of 1 data drive and P drive')
 
     raid_6.disk_list = broken_1_disks.copy()
     before_recovery(raid_6)
@@ -225,18 +229,18 @@ if __name__ == '__main__':
     raid_6.p_disk = None
     before_recovery(raid_6, 'p', True)
 
-    print('\n recovery')
+    logging.info('\n recovery')
     msg = galois_drive_recovery(raid_6=raid_6,
                                 mode=4,
                                 Q=gf.drive_to_gf(raid_6.get_Q()),
                                 missing_disk_id_1=missing_disk_id_1,
                                 )
-    print(msg)
+    logging.info(msg)
     after_recovery(raid_6)
 
-    print('-------------------')
+    logging.info('-------------------')
 
-    print('\n TEST FAILURE MODE 5: loss of 1 data drive and Q drive')
+    logging.info('\n TEST FAILURE MODE 5: loss of 1 data drive and Q drive')
 
     raid_6.disk_list = broken_1_disks.copy()
     before_recovery(raid_6)
@@ -244,23 +248,23 @@ if __name__ == '__main__':
     raid_6.q_disk = None
     before_recovery(raid_6, 'q', True)
 
-    print('\n recovery')
+    logging.info('\n recovery')
     msg = galois_drive_recovery(raid_6=raid_6,
                                 mode=5,
                                 P=gf.drive_to_gf(raid_6.get_P()),
                                 missing_disk_id_1=missing_disk_id_1,
                                 )
-    print(msg)
+    logging.info(msg)
     after_recovery(raid_6)
 
-    print('-------------------')
+    logging.info('-------------------')
 
-    print('\n TEST FAILURE MODE 6: loss of 2 data drives')
+    logging.info('\n TEST FAILURE MODE 6: loss of 2 data drives')
 
     raid_6.disk_list = broken_2_disks.copy()
     before_recovery(raid_6)
 
-    print('\n recovery')
+    logging.info('\n recovery')
     msg = galois_drive_recovery(raid_6=raid_6,
                                 mode=6,
                                 P=gf.drive_to_gf(raid_6.get_P()),
@@ -268,12 +272,12 @@ if __name__ == '__main__':
                                 missing_disk_id_1=missing_disk_id_1,
                                 missing_disk_id_2=missing_disk_id_2,
                                 )
-    print(msg)
+    logging.info(msg)
     after_recovery(raid_6)
 
-    print('-------------------')
+    logging.info('-------------------')
 
-    print('\n TEST FAILURE MODE 7: loss of P and Q drives')
+    logging.info('\n TEST FAILURE MODE 7: loss of P and Q drives')
 
     raid_6.q_disk = None
     before_recovery(raid_6, 'q')
@@ -281,13 +285,13 @@ if __name__ == '__main__':
     raid_6.p_disk = None
     before_recovery(raid_6, 'p', True)
 
-    print('\n recovery')
+    logging.info('\n recovery')
     msg = galois_drive_recovery(raid_6=raid_6,
                                 mode=7,
                                 )
-    print(msg)
+    logging.info(msg)
     after_recovery(raid_6)
 
-    print('---------TESTS COMPLETED----------')
+    logging.info('---------TESTS COMPLETED----------')
     logging.info("Stop")
     logging.shutdown()
