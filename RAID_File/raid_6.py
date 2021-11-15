@@ -109,6 +109,10 @@ class RAID(object):
     
     ##### Check for drive failure
     def check_for_failure(self):
+        '''
+        Will return a string reporting the status of the drives. Either "No Failures" or "At least one failure". 
+        This test is not able to detect the failure mode. That would require knowledge from outside the algorithms in this controller.
+        '''
         
         if self.p_disk == None:
             return "P disk failure"
