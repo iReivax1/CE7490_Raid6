@@ -68,7 +68,7 @@ PASS
  recovery
 Write done at6
 Disk id 6 recovered and restored.
-Took 0.0342 seconds
+Took 0.0341 seconds
 
  after recovery
 No failures
@@ -85,7 +85,7 @@ PASS
 Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
 Write done at-1
 P has been computed and written to the P drive
-Took 0.0123 seconds
+Took 0.0113 seconds
 
  after recovery
 No failures
@@ -102,7 +102,7 @@ PASS
 Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
 Write done at-2
 Q has been computed and written to the Q drive
-Took 0.0191 seconds
+Took 0.0194 seconds
 
  after recovery
 No failures
@@ -122,7 +122,7 @@ Write done at6
 Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-1 is already created
 Write done at-1
 Disk id 6 recovered and restored; in addition P has been computed and written to the P drive
-Took 0.2318 seconds
+Took 0.0296 seconds
 
  after recovery
 No failures
@@ -142,7 +142,7 @@ Write done at6
 Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is already created
 Write done at-2
 Disk id 6 recovered and restored; in addition Q has been computed and written to the Q drive
-Took 0.0292 seconds
+Took 0.0288 seconds
 
  after recovery
 No failures
@@ -159,7 +159,7 @@ PASS
 Write done at6
 Write done at3
 Disk id 6 and 3 recovered and restored
-Took 0.0456 seconds
+Took 0.2486 seconds
 
  after recovery
 No failures
@@ -181,7 +181,7 @@ Disk C:\Users\yipji\Offline Documents\Git Folder\CE7490_Raid6\C_drive\disk_-2 is
 Write done at-2
 P has been computed and written to the P driveand; 
  Q has been computed and written to the Q drive
-Took 0.0312 seconds
+Took 0.0307 seconds
 
  after recovery
 No failures

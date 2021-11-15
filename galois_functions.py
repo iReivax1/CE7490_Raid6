@@ -166,7 +166,7 @@ def Q_decoder(Q, remaining_disks, missing_disk_id):
     i = cp255[missing_disk_id]
     
     Qx = Q_encoder(remaining_disks)
-    D = (Q+Qx)/(g**i)
+    D = (Q+Qx)*(g**-i)
     return D
     
 def P_decoder(P, remaining_disks, missing_disk_id):
