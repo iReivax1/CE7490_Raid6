@@ -19,4 +19,20 @@ This repo is for the purpose of CE7490 project 2. Raid 6 configuration is implem
 ## Logging
 All information will be logged into unit_test.log file for further inspection of results.
 
+## Notes
+The galois file is the source code for the galois package. Which can be found [here](https://github.com/mhostetter/galois)
+
+### Citation for the galois file
+Bibtex:
+
+```bibtex
+@misc{Hostetter_Galois_2020,
+    title = {{Galois: A performant NumPy extension for Galois fields}},
+    author = {Hostetter, Matt},
+    month = {11},
+    year = {2020},
+    url = {https://github.com/mhostetter/galois},
+}
+```
+
 
