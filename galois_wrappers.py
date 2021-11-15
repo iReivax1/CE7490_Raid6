@@ -69,11 +69,11 @@ def galois_drive_recovery(raid_6, mode, remaining_disks = None, P = None, Q = No
     
     elif mode == 2:
         raid_6.p_disk = raid_6.create_disk(-1,'P')
-        return raid_6.compute_P(write=True)
+        return raid_6.compute_P(write=True) + f"\nTook {time.perf_counter()-tic:0.4f} seconds"
     
     elif mode == 3:
         raid_6.q_disk = raid_6.create_disk(-2,'Q')
-        return raid_6.compute_Q(write=True)
+        return raid_6.compute_Q(write=True) + f"\nTook {time.perf_counter()-tic:0.4f} seconds"
     
     elif mode == 4:
         rD = gf.Q_decoder(Q, remaining_disks, missing_disk_id_1)

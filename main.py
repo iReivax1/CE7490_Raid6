@@ -3,11 +3,6 @@ import sys
 import os
 import sys
 
-# ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
-# sys.path.append(ROOT_DIR)
-# PAR_PATH = os.path.abspath(os.path.join(ROOT_DIR, os.pardir))
-# sys.path.append(PAR_PATH)
-
 from RAID_File.raid_6 import RAID
 from fileObject import FileObject
 from diskObject import DiskObject
